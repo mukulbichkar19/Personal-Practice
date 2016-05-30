@@ -1,0 +1,9 @@
+public class Plant{
+		public boolean flowering;
+		public Leaf[] leaves;
+}
+
+class Leaf{
+	public String color;
+	public int length;
+}	

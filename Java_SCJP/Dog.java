@@ -10,6 +10,12 @@ public class Dog{
 		this.age = age;
 	}
 
+	// hashCode is a method that must also be overrided, if two objects are equla then the 
+	// hashCodes are equal.  
+	public int  hashCode(){
+		return age;
+	}
+
 	public boolean equals(Object obj){
 
 		if(!(obj instanceof Dog)){
@@ -42,6 +48,11 @@ public class Dog{
 
 		if(d1 == d2){
 			System.out.println("d1 == d2");
+		}
+
+		if(d1.hashCode() == d2.hashCode()){
+			System.out.println(d1.hashCode());
+			System.out.println("HashCode are equals");
 		}
 
 	}
