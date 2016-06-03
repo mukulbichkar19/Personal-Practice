@@ -1,0 +1,2 @@
+alias changetogitdir=' . changedir.sh'
+

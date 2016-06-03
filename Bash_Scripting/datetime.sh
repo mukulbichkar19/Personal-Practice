@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 # A Script that displays the current user along with date and time
 
