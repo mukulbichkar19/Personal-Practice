@@ -27,9 +27,6 @@ public class carDecider{
 		runningcostcar1 = carprice1 + ((milesexpected/mileagecar1)*costoffuel);
 		runningcostcar2 = carprice2 + ((milesexpected/mileagecar2)*costoffuel);
 
-		System.out.println(runningcostcar1);
-		System.out.println(runningcostcar2);
-		
 		if(runningcostcar1 > runningcostcar2)
 		{
 			System.out.println("Buy Car 2");
