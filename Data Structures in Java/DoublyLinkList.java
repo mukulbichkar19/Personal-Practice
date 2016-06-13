@@ -8,10 +8,13 @@
 
 */
 
+/* Deletion
 
+1. At Start
+2. At end
+3. At any position
 
-
-
+*/
 
  public class Doublylinklist{
 
@@ -56,6 +59,8 @@
 
  	//insert at any pos
  	public void insertAtAnyPos(int data, int position){
+ 		
+ 		System.out.println("Inside insert at any position");
  		int i=1;
  		DoubleNode temp = head;
  		DoubleNode node = new DoubleNode(data);
@@ -63,11 +68,61 @@
  			temp=temp.next;
  			i++;
  		}
+ 		//System.out.println(temp.data);
  		node.prev = temp;
  		node.next = temp.next;
  		temp.next = node;
  		temp.next.prev = node;
  		length++;
+ 	}
+
+ 	//  remove at start
+ 	public void removeAtStart(){
+ 		if(length==1){
+ 			head=null;
+ 			length--;
+ 		}
+ 		else{
+ 			DoubleNode temp = head;
+ 			head = temp.next;
+ 			head.prev=null;
+ 			temp = null;
+ 			length--;
+ 		}
+ 	}
+
+ 	// remove at end
+ 	public void removeAtEnd(){
+ 		if(length==1){
+ 			head=null;
+ 			length--;
+ 		}
+ 		else{
+ 			DoubleNode temp = head;
+ 			while(temp.next.next!=null){
+ 				temp=temp.next;
+ 			}
+ 			temp.next=null;
+ 			length--;
+ 		}
+ 	}
+
+ 	// remove at positon
+ 	public void removeAtpos(int position){
+ 		
+ 		int i=1;
+ 		DoubleNode temp = head;
+ 		while(i != position-1){
+ 			temp=temp.next;
+ 			i++;
+ 		}
+ 		//System.out.println(temp.data);
+ 		DoubleNode delnode = temp.next;
+ 		temp.next = delnode.next;
+ 		delnode.next.prev = temp;
+ 		delnode = null;
+ 		length--;
+
  	}
 
  	public void displayList(){
@@ -108,8 +163,12 @@
  			System.out.println("1. At Beginning");
  			System.out.println("2. At end");
  			System.out.println("3. At any position");
- 			System.out.println("8. Display List");
- 			System.out.println("9. Display length");
+ 			System.out.println("4. Delete at start");
+ 			System.out.println("5. Delete at end");
+ 			System.out.println("6. Delete at any position");
+ 			System.out.println("7. Display List");
+
+ 			System.out.println("8. Display length");	
 
 
 
@@ -139,9 +198,35 @@
  							dll.insertAtAnyPos(data,position);
  						}		
  						break;
- 				case 8: dll.displayList();
+ 				case 4: if(dll.length == 0){
+ 							System.out.println("Cannot delete as link list does not exists");
+ 						}		
+ 						else{
+ 							dll.removeAtStart();
+ 						}
+ 						break;
+ 				case 5: if(dll.length == 0){
+ 							System.out.println("Cannot delete as link list does not exists");
+ 						}
+ 						else{
+ 							dll.removeAtEnd();
+ 						}
+ 						break;
+ 				case 6: System.out.println("Enter the position: ");
+ 						position=scan.nextInt();
+ 						if(position==1){
+ 							dll.removeAtStart();
+ 						}
+ 						else if(position == dll.length){
+ 							dll.removeAtEnd();
+ 						}
+ 						else{
+ 							dll.removeAtpos(position);
+ 						}
  						break;		
- 				case 9: dll.displayLength();	
+ 				case 7: dll.displayList();
+ 						break;		
+ 				case 8: dll.displayLength();	
  						break;
 
  				default: System.out.println("Wrong Choice");
