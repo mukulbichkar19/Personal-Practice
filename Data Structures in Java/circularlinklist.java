@@ -1,4 +1,4 @@
-// SinglyLinkedList
+// CircularLinkedList
 /*
 In the following program the below operations will be done:- 
 
@@ -18,7 +18,7 @@ C) General
 
 */
 
-public class LinkedList{
+public class circularlinklist{
 
 			int length; // Length of linked list
 
@@ -30,41 +30,55 @@ public class LinkedList{
 
 				if(length==0){
 					head = new Node(data);
+					head.next = head;
 					length++;
+					//System.out.println("Head is "+head.data+" and next is "+head.next.data);
 				}
 				else{
 						Node node = new Node(data);
-						node.next = head;
+						Node temp=head;
+						while(temp.next!=head){
+							temp=temp.next;
+						}
+						node.next=head;
 						head = node;
+						temp.next=head;
 						length++;
-				}
+					}
 
 		}
 
 		public void insertAtEnd(int data){
 
 			Node temp = head;
-			while(temp.next!=null){
+			while(temp.next!=head){
 				temp=temp.next;
 			}
 			Node node = new Node(data);
+			//System.out.println(temp.data);
+			node.next = head;
 			temp.next = node;
+			//temp.next = node;
 			length++;
 
 		}
 
 		public void insertAtPos(int data, int position){
 
+			System.out.println("Inside Insert at position "+position);
 			int i = 1;
 			Node temp = head;
-			while(position == i++){
+			System.out.println(i);
+			int index = position-1;
+			while(index == i){
 				temp = temp.next;
-			
+				i++;
 			}
-			Node node = new Node(data);
+			System.out.println(temp.data);
+			/*Node node = new Node(data);
 			node.next = temp.next;
 			temp.next = node;
-			length++;
+			length++;*/
 		}
 
 		public void removeFirst(){
@@ -75,8 +89,17 @@ public class LinkedList{
 			else{
 				
 				Node temp = head;
-				head = temp.next;
-				temp = null;
+				Node delhead = temp;
+				while(temp.next!=head){
+					temp = temp.next;
+				}
+				//System.out.println(temp.data);
+				Node newhead = head.next;
+				temp.next = newhead;
+				head = newhead;
+				delhead = null;
+				//head = temp.next;
+				//temp = null;
 				length--;
 			}
 		}
@@ -88,11 +111,14 @@ public class LinkedList{
 			}
 			else{
 					Node temp = head;
-					while(temp.next.next!=null){
+					while(temp.next.next!=head){
 						temp=temp.next;
 					}
 					//System.out.println(temp.data);
-					temp.next = null;
+					Node delnode = temp.next;
+					temp.next = head;
+					delnode = null;
+					length--;
 			}
 		}
 
@@ -106,8 +132,7 @@ public class LinkedList{
 					i++;
 				}
 				Node del = temp.next;
-				//System.out.println(del.data);
-				temp.next = temp.next.next;
+				temp.next = del.next;
 				del = null;
 
 			}
@@ -121,16 +146,30 @@ public class LinkedList{
 
 		public void displayList(){
 
+				//int len = length;
 			if(length!=0){
-			Node temp = head;
-			while(temp!=null){
+			//Node temp = head;
+			if(length==1){
+				System.out.print(head.data);
+				System.out.print(" ---> ");	
+				
+			}
+			else{
+				Node temp = head.next;
+				System.out.print(head.data);
+				System.out.print(" ---> ");
+				while(temp!=head){
+				//System.out.println(temp.next.data);
 				System.out.print(temp.data);
 				temp=temp.next;
+				//System.out.println("\t"+temp.data);
 				System.out.print(" ---> ");
-			}
-				System.out.print("null");
-				System.out.println();
-			}
+				//len--;
+				 }
+		    }
+		    System.out.print("null");
+			System.out.println();
+		}
 			else{
 				System.out.println("Link list does not exists");
 			}
@@ -154,13 +193,13 @@ public class LinkedList{
 		char ans;
 		int choice=0;
 		int data=0;
-		LinkedList sll = new LinkedList();
-		sll.length = 0;
+		circularlinklist cll = new circularlinklist();
+		cll.length = 0;
 		do{
 			System.out.println("*******  Menu *******");
 			System.out.println("1. Insert at the start");
 			System.out.println("2. Insert at the end (Append)");
-			System.out.println("3. Insert at the any position");
+			System.out.println("3. Insert at the any position"); //Not able to implement
 			System.out.println("----------------------------");
 			System.out.println("4. Remove a node from beginning");
 			System.out.println("5. Remove a node from end");
@@ -179,67 +218,75 @@ public class LinkedList{
 
 					case 1: System.out.println("Enter data: ");
 							data = scan.nextInt();
-							sll.insertAtStart(data);
+							cll.insertAtStart(data);
 							break;
 					case 2: System.out.println("Enter data: ");
 							data = scan.nextInt();
-							sll.insertAtEnd(data);
+							cll.insertAtEnd(data);
 							break;
 					case 3: System.out.println("Enter data: ");	
 							data = scan.nextInt();
 							System.out.println("Enter the position at which you want to enter: ");
 							int position = scan.nextInt();
-							if(position > sll.length){
+							if(position > cll.length){
 								System.out.println("Cannot insert at this position");
-								System.out.println("The length of list is: "+sll.length);
+								System.out.println("The length of list is: "+cll.length);
 								break;
 							}
 							else{
-								sll.insertAtPos(data,position);
+								if(position == 1){
+									cll.insertAtStart(data);
+								}
+								else if(position == cll.length+1){
+									cll.insertAtEnd(data);
+								}
+								else{
+									cll.insertAtPos(data,position);
+								}
 							}
 						
 						break;
-					case 4: if(sll.length==0){
+					case 4: if(cll.length==0){
 
 								System.out.println("Cannot delete as link list does not exists");
 							}
 							else{
-									sll.removeFirst();
+									cll.removeFirst();
 							}
 							break;
-					case 5: if(sll.length==0){
+					case 5: if(cll.length==0){
 
 								System.out.println("Cannot delete as link list does not exists");
 							}
 							else{
 									
 
-									sll.removeLast();
+									cll.removeLast();
 							}
 							break;	
-					case 6: if(sll.length == 0){
+					case 6: if(cll.length == 0){
 								System.out.println("Cannot remove the node as link list does not exists");
 							}		
 							else{
 									System.out.println("Enter the position you want to remove: ");
 									position = scan.nextInt();
 									if(position == 1){
-										sll.removeFirst();
+										cll.removeFirst();
 									}
-									else if(position == sll.length){
-										sll.removeLast();
+									else if(position == cll.length){
+										cll.removeLast();
 									}
 									else{
-										sll.removeFromSpecifiedPosition(position);
+										cll.removeFromSpecifiedPosition(position);
 									}
 									
 								}
 							break;
-					case 7: sll.displayLength();
+					case 7: cll.displayLength();
 							break;
-					case 8: sll.clearAll();
+					case 8: cll.clearAll();
 							 break;
-					case 9: sll.displayList();
+					case 9: cll.displayList();
 							 break;		
 					default: System.out.println("Wrong Choice");		
 
