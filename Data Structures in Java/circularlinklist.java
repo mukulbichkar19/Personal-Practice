@@ -203,8 +203,6 @@ public class circularlinklist{
 			System.out.println("----------------------------");
 			System.out.println("4. Remove a node from beginning");
 			System.out.println("5. Remove a node from end");
-			//System.out.println("6. Remove a specified node");
-			//System.out.println("6. Remove a node from beginning");
 			System.out.println("6. Remove a node from specified position");
 			System.out.println("----------------------------");
 			System.out.println("7. Length of linked list");
