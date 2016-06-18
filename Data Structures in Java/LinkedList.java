@@ -186,14 +186,21 @@ public class LinkedList{
 
 			Node slowPtr=head;
 			Node fastPtr=head;
-			Node temp=head;
+			int len=1;
 		
 			//System.out.println(slowPtr.data+" "+fastPtr.data);
 			while(fastPtr != null){
 				
 				slowPtr = slowPtr.next;
 				fastPtr = slowPtr.next.next;
-				
+				len++;
+			}
+			//System.out.println(len+1);
+			if((len+1)%2 == 0){
+				System.out.println("Link list is even");
+			}
+			else{
+				System.out.println("Link List is odd");
 			}
 			
 			
@@ -201,6 +208,42 @@ public class LinkedList{
 
 		}
 
+		public void printReverse(Node head){
+			
+			Node temp = head;
+
+			if(temp == null){
+				return;
+			}
+			printReverse(temp.next);
+			System.out.print(head.data);
+			System.out.print(" ---> ");
+
+
+
+		}
+
+		public void swapInPairs(){
+
+			Node prevNode = head;
+			Node nextNode = prevNode.next;
+			int cpy=0;
+			while(prevNode != null && prevNode.next!=null){
+
+				cpy = nextNode.data;
+				nextNode.data = prevNode.data;
+				prevNode.data = cpy;
+				prevNode = nextNode.next;
+				if(prevNode != null){
+					//if(prevNode.next!=null)
+					nextNode = prevNode.next;
+					//System.out.println(nextNode.data);
+				}
+
+			}
+
+
+		}
 
 
 	
@@ -230,6 +273,9 @@ public class LinkedList{
 			System.out.println("10. Insertion in a sorted list.");
 			System.out.println("11. Reversing a link list.");
 			System.out.println("12. Find Middle of Link List");
+			System.out.println("13. Printing Link List in reverse");
+			System.out.println("14. Linked list is odd or even");
+			System.out.println("15. Swap in pairs");
 			System.out.println("Enter choice: ");
 			choice = scan.nextInt();
 
@@ -320,6 +366,14 @@ public class LinkedList{
 					case 12: position = sll.findMiddle();
 							 System.out.println("The middle of link list is: "+position);
 							 break;		       
+					case 13: sll.printReverse(sll.head);
+						     System.out.print("null");
+							 System.out.println();
+							 break;	
+					case 14: sll.findMiddle();	
+							 break; 
+					case 15: sll.swapInPairs();
+							 break;		 
 					default: System.out.println("Wrong Choice");		
 
 			}
