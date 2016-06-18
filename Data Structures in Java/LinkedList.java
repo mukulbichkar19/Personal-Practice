@@ -162,6 +162,44 @@ public class LinkedList{
 			length = 0;
 		}
 
+		public void reverseList(){
+
+			Node current = head;
+			Node prev =null;
+			Node nextNode = null;
+
+			while(current!=null){
+
+				nextNode = current.next;
+
+				current.next = prev;
+
+				prev = current;
+
+				current = nextNode;
+			}
+			//System.out.println(prev.data);
+			head = prev;
+		}
+
+		public int findMiddle(){
+
+			Node slowPtr=head;
+			Node fastPtr=head;
+			Node temp=head;
+		
+			//System.out.println(slowPtr.data+" "+fastPtr.data);
+			while(fastPtr != null){
+				
+				slowPtr = slowPtr.next;
+				fastPtr = slowPtr.next.next;
+				
+			}
+			
+			
+			return slowPtr.data;
+
+		}
 
 
 
@@ -190,6 +228,8 @@ public class LinkedList{
 			System.out.println("8. Delete the linked list");
 			System.out.println("9. Display Linked List");
 			System.out.println("10. Insertion in a sorted list.");
+			System.out.println("11. Reversing a link list.");
+			System.out.println("12. Find Middle of Link List");
 			System.out.println("Enter choice: ");
 			choice = scan.nextInt();
 
@@ -274,7 +314,12 @@ public class LinkedList{
 					         else{
 					         		sll.insertAtPos(data,position);	
 					         	}
-					         break;		 
+					         break;		
+					case 11: sll.reverseList();
+							 break;    
+					case 12: position = sll.findMiddle();
+							 System.out.println("The middle of link list is: "+position);
+							 break;		       
 					default: System.out.println("Wrong Choice");		
 
 			}
