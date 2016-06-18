@@ -57,10 +57,12 @@ public class LinkedList{
 
 			int i = 1;
 			Node temp = head;
-			while(position == i++){
+			//System.out.println("Inside Insert at Pos"+position);
+			while(position-1 != i){
 				temp = temp.next;
-			
+				i++;
 			}
+			//System.out.println("The prev node is: "+temp.data);
 			Node node = new Node(data);
 			node.next = temp.next;
 			temp.next = node;
@@ -111,6 +113,24 @@ public class LinkedList{
 				del = null;
 
 			}
+
+
+		// Insertion in a sorted link list
+		public int SortedInsert(int data){
+
+			int position = 1;
+			Node temp = head;
+			//System.out.println(data);
+			//System.out.println(temp.data>data);
+			while(temp.next.data < data){
+				temp=temp.next;
+				position++;
+			}
+			//System.out.println(temp.data);
+			//	System.out.println(position);
+			return position+1;
+
+		}	
 
 		
 
@@ -164,13 +184,12 @@ public class LinkedList{
 			System.out.println("----------------------------");
 			System.out.println("4. Remove a node from beginning");
 			System.out.println("5. Remove a node from end");
-			//System.out.println("6. Remove a specified node");
-			//System.out.println("6. Remove a node from beginning");
 			System.out.println("6. Remove a node from specified position");
 			System.out.println("----------------------------");
 			System.out.println("7. Length of linked list");
 			System.out.println("8. Delete the linked list");
 			System.out.println("9. Display Linked List");
+			System.out.println("10. Insertion in a sorted list.");
 			System.out.println("Enter choice: ");
 			choice = scan.nextInt();
 
@@ -241,6 +260,21 @@ public class LinkedList{
 							 break;
 					case 9: sll.displayList();
 							 break;		
+					case 10: System.out.println("Enter the data you want to insert: "); 
+							 data = scan.nextInt();
+							 sll.SortedInsert(data);
+					         position = sll.SortedInsert(data);
+					         System.out.println(position);
+					         if(position == 1){
+					         		sll.insertAtStart(data);
+					         }
+					         else if(position == sll.length+1){
+					         		sll.insertAtEnd(data);
+					         }
+					         else{
+					         		sll.insertAtPos(data,position);	
+					         	}
+					         break;		 
 					default: System.out.println("Wrong Choice");		
 
 			}
