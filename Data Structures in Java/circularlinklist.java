@@ -23,6 +23,8 @@ public class circularlinklist{
 			int length; // Length of linked list
 
 			Node head;
+			Node head1;
+			Node head2;
 
 
 
@@ -137,7 +139,31 @@ public class circularlinklist{
 
 			}
 
-		
+		public void splitLinklist(){
+
+			Node fastPtr = head;
+			Node slowPtr = head;
+
+			while(fastPtr.next!=head && fastPtr.next.next!=head){
+				
+				fastPtr = fastPtr.next.next;
+				slowPtr = slowPtr.next;
+			}
+			//System.out.println("Fast Pointer is: "+fastPtr.data);
+			//System.out.println("Slow Pointer is: "+slowPtr.data);
+			// Even Length of link list
+			if(fastPtr.next.next == head){
+					fastPtr = fastPtr.next;
+			}
+			head1 = head;
+			if(head.next!=head){
+				head2 = slowPtr.next;
+			}
+			fastPtr.next = slowPtr.next;
+			slowPtr.next = head;
+
+
+		}
 
 		public void displayLength(){
 
@@ -208,6 +234,7 @@ public class circularlinklist{
 			System.out.println("7. Length of linked list");
 			System.out.println("8. Delete the linked list");
 			System.out.println("9. Display Linked List");
+			System.out.println("10. Splitting a link list.");
 			System.out.println("Enter choice: ");
 			choice = scan.nextInt();
 
@@ -286,6 +313,8 @@ public class circularlinklist{
 							 break;
 					case 9: cll.displayList();
 							 break;		
+					case 10: cll.splitLinklist();
+							 break;		 
 					default: System.out.println("Wrong Choice");		
 
 			}

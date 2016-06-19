@@ -132,6 +132,76 @@ public class LinkedList{
 
 		}	
 
+		public boolean checkPalindrome(){
+
+				int middle = 0,i=1;
+				boolean isPalindrome=false;
+
+				if(length == 0){
+					//return false;
+					System.out.println("Link Lists does not exists");
+				}
+				else{
+
+					middle = length/2;
+				}
+				
+				Node temp =head;
+				
+				if(length%2 == 0){
+					while(i != middle){
+						temp = temp.next;
+						i++;
+					}
+				}
+				else{
+					
+					while(i != (middle+1)){
+						temp = temp.next;
+						i++;
+					}
+				}
+				Node middleNode = temp;
+				Node startRev = temp.next;
+				Node revHead = temp.next;
+				Node nextHead=null;
+				if(revHead.next!=null ){
+					nextHead = revHead.next;
+				}
+				else{
+					int data = revHead.data;
+					if(data == head.data){
+						//return true;
+						isPalindrome = true;
+					}
+				}
+				while(revHead.next != null){
+					int swapData = revHead.data;
+					revHead.data = nextHead.data;
+					nextHead.data = swapData;
+					revHead = nextHead;
+					nextHead = revHead.next;
+				}
+				Node start = head;
+				
+				while(start.data!=middleNode.data){
+
+					if(start.data == startRev.data){
+						isPalindrome=true;
+					}
+					else{
+						isPalindrome=false;
+					}
+
+					start=start.next;
+					startRev=startRev.next;
+				}
+				//System.out.println(isPalindrome+" indicates status");
+				return isPalindrome;
+
+
+
+		}
 		
 
 		public void displayLength(){
@@ -276,6 +346,7 @@ public class LinkedList{
 			System.out.println("13. Printing Link List in reverse");
 			System.out.println("14. Linked list is odd or even");
 			System.out.println("15. Swap in pairs");
+			System.out.println("16. Check whether a link list is Palindrome ?");
 			System.out.println("Enter choice: ");
 			choice = scan.nextInt();
 
@@ -373,7 +444,14 @@ public class LinkedList{
 					case 14: sll.findMiddle();	
 							 break; 
 					case 15: sll.swapInPairs();
-							 break;		 
+							 break;		
+					case 16: if(sll.checkPalindrome()){
+								System.out.println("The link list is a palindrome");
+							 }
+							 else{
+							 	System.out.println("The link list is not a palindrome.");
+							 }
+							 break;		  
 					default: System.out.println("Wrong Choice");		
 
 			}
