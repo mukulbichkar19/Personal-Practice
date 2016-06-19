@@ -17,8 +17,9 @@ C) General
 2. Clear the linked list.
 
 */
+import java.util.*;
 
-public class LinkedList{
+public class MyLinkedList{
 
 			int length; // Length of linked list
 
@@ -311,21 +312,57 @@ public class LinkedList{
 				}
 
 			}
-
-
 		}
+
+		public void reOrder(){
+
+				LinkedList<Node> stack = new LinkedList<Node>();
+				Node slowPtr = head;
+				Node fastPtr = head;
+				while(fastPtr!=null && fastPtr.next!=null){
+					fastPtr = fastPtr.next.next;
+					slowPtr = slowPtr.next;
+				}
+				//System.out.println(slowPtr.data);
+				Node head2 = slowPtr.next;
+				slowPtr.next = null;
+				while(head2!=null){
+
+					Node temp = head2;
+					head2 = head2.next;
+					temp.next=null;
+					stack.push(temp);
+
+				}
+				Node temp2 = head;
+				while(!stack.isEmpty()){
+					
+					Node temp = stack.pop();
+					temp.next = temp2.next;
+					temp2.next = temp;
+					temp2 = temp.next;
+					
+				}
+
+
+
+
+		}	
+
+
+		
 
 
 	
 
 	public static void main(String args[]){
 
-		//System.out.println("Enter the data for head node: ");
+		
 		java.util.Scanner scan = new java.util.Scanner(System.in);
 		char ans;
 		int choice=0;
 		int data=0;
-		LinkedList sll = new LinkedList();
+		MyLinkedList sll = new MyLinkedList();
 		sll.length = 0;
 		do{
 			System.out.println("*******  Menu *******");
@@ -347,6 +384,7 @@ public class LinkedList{
 			System.out.println("14. Linked list is odd or even");
 			System.out.println("15. Swap in pairs");
 			System.out.println("16. Check whether a link list is Palindrome ?");
+			System.out.println("17. Re-ordering a list as alternate with one element from last.");
 			System.out.println("Enter choice: ");
 			choice = scan.nextInt();
 
@@ -452,6 +490,8 @@ public class LinkedList{
 							 	System.out.println("The link list is not a palindrome.");
 							 }
 							 break;		  
+					case 17: sll.reOrder();
+							 break;		 
 					default: System.out.println("Wrong Choice");		
 
 			}
