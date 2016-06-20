@@ -344,11 +344,72 @@ public class MyLinkedList{
 					
 				}
 
+		}
+
+		public void pivotalSort(int k){
 
 
+			Node root = new Node(0);
+			Node pivot = new Node(k);
+			Node rootNext = root;
+			Node pivotNext = pivot;
+			Node currentNode = head;
 
+			while(currentNode != null){
+
+				Node next = currentNode.next;
+				if(currentNode.data > k){
+					pivotNext.next = currentNode;
+					pivotNext = currentNode;
+					pivotNext.next = null;
+				}else if(currentNode.data == k){
+
+				}
+				else{
+					rootNext.next = currentNode;
+					rootNext = currentNode;
+				}
+				currentNode = next;
+			}
+
+			rootNext.next = pivot;
+			head = root.next; 
 		}	
 
+		public void removeDuplicates(){
+
+			Node current = head;
+			Node prev = current;
+			Node nextNode = current.next;
+
+			while(current != null){
+
+				while(nextNode!=null){
+					if(current.data == nextNode.data){
+						
+						Node del = nextNode;
+						nextNode = nextNode.next;
+						prev.next = nextNode;
+						del = null;
+					}
+					else{
+						prev = nextNode;
+						nextNode = prev.next;
+					}
+
+				}
+				current = current.next;
+				prev = current;
+				//nextNode = prev.next;
+
+
+
+			}
+
+
+
+
+		}
 
 		
 
@@ -385,6 +446,8 @@ public class MyLinkedList{
 			System.out.println("15. Swap in pairs");
 			System.out.println("16. Check whether a link list is Palindrome ?");
 			System.out.println("17. Re-ordering a list as alternate with one element from last.");
+			System.out.println("18. List Partition based on a value");
+			System.out.println("19. Remove Duplicates");
 			System.out.println("Enter choice: ");
 			choice = scan.nextInt();
 
@@ -491,7 +554,13 @@ public class MyLinkedList{
 							 }
 							 break;		  
 					case 17: sll.reOrder();
-							 break;		 
+							 break;		
+					case 18: System.out.println("Enter the number you want as pivot: ");
+							 data = scan.nextInt();
+							 sll.pivotalSort(data);
+							 break;		
+					case 19: sll.removeDuplicates();
+							 break;		   
 					default: System.out.println("Wrong Choice");		
 
 			}
