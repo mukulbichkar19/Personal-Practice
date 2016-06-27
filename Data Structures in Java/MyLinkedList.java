@@ -411,6 +411,29 @@ public class MyLinkedList{
 
 		}
 
+		public void removeDuplicatesLower(){
+
+			Map<Integer,Boolean> mapper = new HashMap<,Boolean>();
+			Node curr = head;
+			Node nextNode;
+			while(curr.next != null)
+			{
+				nextNode = curr.next;
+				if(mapper.get(nextNode.data)!=null){
+					curr.next=nextNode.next;
+				}
+				else{
+					mapper.put(curr.data,true);
+					curr = curr.next;
+				}
+			}
+
+
+
+
+
+		}
+
 		
 
 
@@ -448,6 +471,7 @@ public class MyLinkedList{
 			System.out.println("17. Re-ordering a list as alternate with one element from last.");
 			System.out.println("18. List Partition based on a value");
 			System.out.println("19. Remove Duplicates");
+			System.out.println("20. Remove Duplicates with lower time complexity.O(n)");
 			System.out.println("Enter choice: ");
 			choice = scan.nextInt();
 
@@ -560,7 +584,9 @@ public class MyLinkedList{
 							 sll.pivotalSort(data);
 							 break;		
 					case 19: sll.removeDuplicates();
-							 break;		   
+							 break;	
+					case 20: sll.removeDuplicatesLower();
+					         break;		 	   
 					default: System.out.println("Wrong Choice");		
 
 			}
