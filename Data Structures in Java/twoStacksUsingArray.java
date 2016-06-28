@@ -36,7 +36,7 @@ public class twoStacksUsingArray{
 						break;
 				case 2: System.out.println("Enter the data: ");
 						data = scan.nextInt();
-						if(top2 == top1-1){
+						if(top2 == top1-n1){
 							System.out.println("Cannot push in Stack2");
 						}
 						else{
