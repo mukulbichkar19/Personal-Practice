@@ -1,2 +1,2 @@
 # Personal-Practice
-This repository will contain all my personal codes done for practice
+This repository contains all my personal codes done for practice
