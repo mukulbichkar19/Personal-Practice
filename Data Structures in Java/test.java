@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class test{
 	
 	static java.util.Stack<Integer> stack = new java.util.Stack<Integer>();
@@ -20,7 +22,7 @@ public class test{
 	public static void main(String args[]){
 
 		
-		java.util.Scanner scan = new java.util.Scanner(System.in);
+		/*java.util.Scanner scan = new java.util.Scanner(System.in);
 		System.out.println("Enter the size of array: ");
 		int n = scan.nextInt();
 		int[] array = new int[n];
@@ -43,6 +45,28 @@ public class test{
 
 
 
+	*/
+
+		ArrayList l = new ArrayList();
+		for(int i=0;i<=10;i++){
+			l.add(i);
+		}
+		//System.out.println(l);
+		/*Iterator iter = l.iterator();
+		while(iter.hasNext()){
+			Integer i = (Integer)iter.next();
+			if(i%2 == 0){
+				System.out.println(i);
+			}
+			else{
+				iter.remove();
+			}
+		}*/
+
+		ListIterator iter = l.listIterator();
+		while(iter.hasNext()){
+			
+		}
 
 
 		
