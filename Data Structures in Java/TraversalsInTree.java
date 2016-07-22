@@ -193,6 +193,195 @@ public ArrayList<ArrayList<Integer>> levelOrderIterative(BinaryTreeNode root){
 }
 
 
+// Level Order Easy Way Using Queue
+public void levleOrderUsingQueue(BinaryTreeNode root){
+
+	
+		Queue<BinaryTreeNode> queue = new LinkedList<BinaryTreeNode>();
+		queue.offer(root);
+		while(!queue.isEmpty()){
+			BinaryTreeNode tempNode = queue.poll();
+			System.out.print(tempNode.data+" ");
+
+			if(tempNode.left != null){
+				queue.add(tempNode.left);
+			} 
+
+			if(tempNode.right!=null){
+				queue.add(tempNode.right);
+			}
+		}		
+	}
+
+// Maximum in a tree recursion
+
+	 public int MaxValue(BinaryTreeNode root){
+
+	 	int maxValue = Integer.MIN_VALUE;
+
+	 	if(root!=null){
+	 		int leftMax = MaxValue(root.left);
+	 		int rightMax = MaxValue(root.right);
+
+	 		if(leftMax > rightMax){
+	 			maxValue = leftMax;
+	 		}
+	 		else{
+	 			maxValue = rightMax;
+	 		}
+	 		if(root.data > maxValue)
+	 			maxValue = root.data;
+	 	}
+	 	return maxValue;
+
+
+
+
+
+	 }
+
+	 // Finding Max Iterative
+	 public int MaxValueIterative(BinaryTreeNode root){
+
+	 		if(root==null){
+	 			return -1;
+	 		}
+	 		int max = Integer.MIN_VALUE;
+	 		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
+	 		q.offer(root);
+	 		while(!q.isEmpty()){
+
+	 			BinaryTreeNode temp2 = q.poll();
+	 			if(temp2.data > max){
+	 				max = temp2.getData();
+	 			}
+	 			if(temp2.left != null){
+	 				q.offer(temp2.getLeft());
+	 			}
+	 			if(temp2.right != null){
+	 				q.offer(temp2.getRight());
+	 			}
+	 		}
+
+	 		return max;
+
+
+
+
+	 }
+
+	 // Search Recursive
+	 public static boolean searchRecursive(BinaryTreeNode root, int data){
+
+	 	if(root == null){
+	 		return false;
+	 	}
+	 	if(root.getData() == data){
+	 		return true;
+	 	}
+	 	return searchRecursive(root.left,data) || searchRecursive(root.right,data);
+	 }
+
+	 // Search Iterative
+	 public boolean searchIterative(BinaryTreeNode root,int data){
+
+	 	Queue<BinaryTreeNode> queue = new LinkedList<BinaryTreeNode>();
+	 	queue.offer(root);
+	 	while(!queue.isEmpty()){
+
+	 		BinaryTreeNode temp3 = queue.poll();
+	 		if(temp3.data == data){
+	 			return true;
+	 		}
+	 		if(temp3.right != null){
+	 			queue.offer(temp3.right);
+	 		}
+	 		if(temp3.left != null){
+	 			queue.offer(temp3.left);
+	 		}
+
+	 	}
+
+	 	return false;
+	 }
+
+	 public BinaryTreeNode insertIteratively(BinaryTreeNode root,int data){
+
+
+	 	BinaryTreeNode node = new BinaryTreeNode(data);
+	 	if(root == null){
+	 		return node;
+	 	}
+	 	BinaryTreeNode parent = null, current = root;
+	 	while(current != null){
+	 		parent = current;
+	 		if(current.getData() < data){
+	 			current = current.right;
+	 		}
+	 		else
+	 		{
+	 			current = current.left;
+	 		}
+	 	}
+
+	 	if(data > parent.data){
+	 		parent.right = node;
+	 	}else{
+	 		parent.left = node;
+	 	}
+
+	 	return root;
+
+
+
+	 }
+
+	 // Insert in a BST Recursive
+	 public static void insertRecursively(BinaryTreeNode root,int data){
+	 	/*return insertRecurseHelper(root,new BinaryTreeNode(data));*/
+	 	if(data < root.data){
+	 		if(root.left!=null){
+	 			insertRecursively(root.left,data);
+	 		}
+	 		else{
+	 			root.left = new BinaryTreeNode(data);
+	 		}
+	 	}
+	 	else if(data > root.data){
+	 		if(root.right!=null){
+	 			insertRecursively(root.right,data);
+	 		}
+	 		else{
+	 			root.right = new BinaryTreeNode(data);
+	 		}
+	 	}
+
+
+
+
+
+	 }
+
+	 /*public BinaryTreeNode insertRecurseHelper(BinaryTreeNode root,BinaryTreeNode newNode){
+
+	 	if(root == null){
+	 		return newNode;
+	 	}
+	 	else if(newNode.data < root.getData()){
+	 		root.left = insertRecurseHelper(root.left,newNode);
+	 	}
+	 	else if(newNode.data > root.getData()){
+	 		root.right = insertRecurseHelper(root.right,newNode);
+	 	}
+
+	 	return root;
+
+
+
+	 }
+
+*/
+
 	
 
 
@@ -267,6 +456,46 @@ public ArrayList<ArrayList<Integer>> levelOrderIterative(BinaryTreeNode root){
 			System.out.print(p+" ");
 		}
 		System.out.println ();
+
+		System.out.println("Max in a Tree Recursive :");
+		System.out.println(tree.MaxValue(root));
+
+		System.out.println("Max in a Tree Iterative :");
+		System.out.println(tree.MaxValueIterative(root));
+
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the data you want to search: ");
+		int data = scan.nextInt();
+		if(searchRecursive(root,data)){
+			System.out.print("Element is present.");
+		}
+		else{
+			System.out.print("Element is not present");
+		}
+		if(tree.searchIterative(root,data)){
+			System.out.print("\nElement is present. (Iterative)");
+		}
+		else{
+			System.out.print("\nElement is not present. (Iterative)");
+		}
+
+		// Insertion in a BST
+		System.out.println("Enter the data for Insertion: ");
+		data = scan.nextInt();
+		
+
+		tree.levleOrderUsingQueue(tree.insertIteratively(root,data));
+
+		System.out.println();
+		tree.insertRecursively(root,data);
+		tree.levleOrderUsingQueue(root);
+
+
+
+
+
+
+
 
 
 
