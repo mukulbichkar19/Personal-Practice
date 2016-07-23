@@ -381,7 +381,264 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 	 }
 
 */
+	 // Recursive Size
+	 public int size(BinaryTreeNode root){
+	 	int leftCount = root.left==null ? 0 : size(root.left);
+	 	int rightCount = root.right == null ? 0 : size(root.right);
+	 	return leftCount+rightCount+1;
+	 }
 
+	 public int sizeIterative(BinaryTreeNode root){
+	 	int count = 0;
+	 	Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();	
+	 	q.offer(root);
+	 	while(!q.isEmpty()){
+	 		BinaryTreeNode temp4 = q.poll();
+	 		count++;
+	 		if(temp4.right!=null){
+	 			q.offer(temp4.right);
+	 		}
+	 		if(temp4.left!=null){
+	 			q.offer(temp4.left);
+	 		}
+	 	}
+	 	return count;
+
+	}
+
+	public void reverseTree(BinaryTreeNode root){
+
+		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
+		Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+		q.offer(root);
+		while(!q.isEmpty()){
+			BinaryTreeNode temp5 = q.poll(); 
+			
+			if(temp5.right != null)
+			{
+				q.offer(temp5.right);
+			}
+
+			if(temp5.left != null){
+				q.offer(temp5.left);
+			}
+			stack.push(temp5);
+		}
+		while(!stack.isEmpty()){
+			
+			System.out.print(stack.pop().getData()+" ");
+		}
+	}
+
+	// Height of a Tree Recursive
+	public static int heightOfTree(BinaryTreeNode root){
+
+		if(root == null){
+			return 0;
+		}
+
+		int leftDepth = heightOfTree(root.left);
+		int rightDepth = heightOfTree(root.right);
+		return (leftDepth>rightDepth) ? leftDepth+1:rightDepth+1;
+
+
+	}
+
+	// Height of a Tree Iterative (Maximum)
+	public int heightOfTreeIterative(BinaryTreeNode root){
+
+		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
+		q.offer(root);
+		q.offer(null);
+		int count = 1;
+		while(!q.isEmpty()){
+
+			BinaryTreeNode current = q.poll();
+			if(current!=null){
+
+				// Use this condition for Minimum Depth
+				/*if(current.left==null && current.right==null){
+					return count;
+				}*/
+				if(current.right != null){
+					q.offer(current.right);
+				}
+				if(current.left != null){
+					q.offer(current.left);
+				}
+
+			}
+			else{
+				if(!q.isEmpty()){
+					count++;
+					q.offer(null);
+
+				}
+			}
+
+			
+		}
+
+
+		return count;
+	}
+
+	// Leaf Nodes are the one which do not have a left or right child is null
+	public int noOfLeafNodes(BinaryTreeNode root){
+		int count = 0;
+		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
+		if(root == null){
+			return count;
+		}
+		q.offer(root);
+		while(!q.isEmpty()){
+			BinaryTreeNode t = q.poll();
+			if(t.left == null && t.right == null){
+				count++;
+			}
+			if(t.left != null){
+				q.offer(t.left);
+			}
+			if(t.right != null){
+				q.offer(t.right);
+			}
+		}
+		return count;
+	
+	}
+
+
+	// Full Nodes are the one which have both left or right children
+	public int noOfFullNodes(BinaryTreeNode root){
+		int count = 0;
+		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
+		if(root == null){
+			return count;
+		}
+		q.offer(root);
+		while(!q.isEmpty()){
+			BinaryTreeNode t = q.poll();
+			if(t.left != null && t.right != null){
+				count++;
+			}
+			if(t.left != null){
+				q.offer(t.left);
+			}
+			if(t.right != null){
+				q.offer(t.right);
+			}
+		}
+		return count;
+	
+	}
+	
+
+	public int levelWithMaxSum(BinaryTreeNode root){
+
+		int count = 1;
+		int sum = 0;
+		int max = 0;
+		int level = 0;
+		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
+		q.offer(root);
+		q.offer(null);
+		while(!q.isEmpty()){
+
+			BinaryTreeNode current = q.poll();
+			
+			if(current != null){
+
+				sum+=current.getData();
+				if(current.left != null){
+					q.offer(current.left);
+				}
+				if(current.right != null){
+					q.offer(current.right);
+				}
+			}
+			else{
+
+				if(sum > max){
+					max = sum;
+					level = count;
+				}
+				sum = 0;
+				if(!q.isEmpty()){
+					count++;
+					q.offer(null);
+				}
+			}
+		}
+		//System.out.println(level);
+		return max;
+
+	}
+
+	// To check if path exists with given value
+	public boolean isPath(BinaryTreeNode root,int sum){
+
+		if(root == null){
+			return false;
+		}
+		if(root.left==null && root.right==null && root.data == sum){
+			return true;
+		}
+		else{
+			return isPath(root.left,sum-root.data) || isPath(root.right,sum-root.data);
+		}
+
+
+	}
+
+
+	// Mirroring a Binary tree
+
+	public BinaryTreeNode getMirror(BinaryTreeNode root){
+
+		BinaryTreeNode temp;
+		if(root != null){
+
+			getMirror(root.left);
+			getMirror(root.right);
+			temp = root.left;
+			root.left = root.right;
+			root.right = temp;
+
+
+		}
+		return root;
+	}
+
+	// LCA
+	public static BinaryTreeNode lca(BinaryTreeNode root,int n1,int n2){
+
+		BinaryTreeNode left,right;
+		if(root == null){
+			return root;
+		}
+		if(root.getData() == n1 || root.getData() == n2 ){
+			return root;
+		}
+		left = lca(root.left,n1,n2);
+		right = lca(root.right,n1,n2);
+		if(left!=null && right!=null){
+			return root;
+		}else{
+			return (left != null ? left:right);
+		}
+
+		
+
+	}
+
+
+
+	
+
+
+
+
+	
 	
 
 
@@ -401,6 +658,19 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		BinaryTreeNode rightchild1 = new BinaryTreeNode(9);
 		BinaryTreeNode rightchild2 = new BinaryTreeNode(8);
 		BinaryTreeNode rightchild3 = new BinaryTreeNode(10);
+
+		// Tree Structure 2
+		/*BinaryTreeNode root = leftchild1;
+		leftchild1.setLeft(leftchild4);
+		leftchild1.setRight(leftchild3);
+
+		leftchild4.setLeft(leftchild6);
+		leftchild4.setRight(leftchild5);
+
+		leftchild3.setLeft(leftchild7);
+		leftchild3.setRight(new BinaryTreeNode(7));
+*/
+
 		root.setLeft(leftchild1);
 		root.setRight(rightchild1);
 
@@ -415,6 +685,8 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 
 		rightchild1.setLeft(rightchild2);
 		rightchild1.setRight(rightchild3);
+
+
 
 		System.out.println("Pre-Order Traversal: ");
 		tree.PreOrderTraversal(root);
@@ -480,6 +752,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		}
 
 		// Insertion in a BST
+		System.out.println();
 		System.out.println("Enter the data for Insertion: ");
 		data = scan.nextInt();
 		
@@ -489,6 +762,61 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		System.out.println();
 		tree.insertRecursively(root,data);
 		tree.levleOrderUsingQueue(root);
+
+		System.out.println();
+		System.out.println("Size of Tree is: ");
+		System.out.print(tree.size(root));
+
+		System.out.println();
+		System.out.println("Size of Tree Iterative is: ");
+		System.out.print(tree.sizeIterative(root));
+
+		System.out.println();
+		System.out.println("Reverse of the tree is: ");
+		tree.reverseTree(root);
+
+		System.out.println();
+		System.out.println("Height of the tree (Recursive) is: ");
+		System.out.println(heightOfTree(root));
+
+		System.out.println();
+		System.out.println("Height of the tree (Iterative) is: ");
+		System.out.println(tree.heightOfTreeIterative(root));
+
+
+		System.out.println();
+		System.out.println("Count of Leaf Nodes (Iterative) is: ");
+		System.out.println(tree.noOfLeafNodes(root));
+
+		
+
+		System.out.println();
+		System.out.println("Count of Full Nodes (Iterative) is: --> ");
+		System.out.println(tree.noOfFullNodes(root));
+
+		System.out.println();
+		System.out.println("The level that contains maximum sum branch is : --> ");
+		System.out.println(tree.levelWithMaxSum(root));
+
+		System.out.println("Enter the data you want: ");
+		data = scan.nextInt();
+		if(tree.isPath(root,data)){
+			System.out.println("There exists a path.");
+		}
+		else{
+			System.out.println("There is no such path.");
+		}
+
+		tree.inOrderTraversal(tree.getMirror(root));
+
+		// Lowest Common Ancestor
+		System.out.println();
+		System.out.println("Enter the first node: ");
+		data = scan.nextInt();
+		System.out.println("Enter the second node: ");
+		int data2 = scan.nextInt();
+		System.out.println(lca(root,data,data2).getData());
+
 
 
 
