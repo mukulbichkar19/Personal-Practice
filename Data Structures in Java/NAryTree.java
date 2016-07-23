@@ -38,6 +38,20 @@ public class NAryTree{
 
 	}
 
+	public int getChildrenCount(NAryTreeStructure current){
+
+		int count = 0;
+		NAryTreeStructure temp = current.getFirstChild();
+
+		while(temp != null){
+			count++;
+			temp = temp.getnextSibling();
+		}
+
+		return count;
+
+	}
+
 
 
 
@@ -107,6 +121,9 @@ public class NAryTree{
 
 			// Count of Siblings of a node
 			System.out.println(tree.getSiblingCount(root));
+
+			// Get Count of all children of a node
+			System.out.println(tree.getChildrenCount(j));
 
 
 

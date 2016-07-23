@@ -2,6 +2,30 @@ import java.util.*;
 
 public class TraversalsInTree{
 
+
+	/*
+			   			Tree Structure
+
+			  root -->	  7
+			   			  |
+		       ------------------------
+		       |	   			      |
+		       1                      9
+               |                      |
+		--------------            ----------
+		|            |            |        |
+        0            3            8        10
+                     |
+                -----------
+                |         |
+				2         5
+                          |
+                    --------------
+                    |            |
+                    4            6 
+
+	*/
+
 // Recursive Version
 
 	// PreOrder Traversal takes place in the order DLR
@@ -627,10 +651,80 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 			return (left != null ? left:right);
 		}
 
-		
-
 	}
 
+
+
+
+
+
+
+
+
+
+	/*public BinaryTreeNode getPreOrderSuccessor(BinaryTreeNode root){
+
+		BinaryTreeNode p = root;
+		Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+		if(root != null){
+			p = root;
+		}
+		else{
+			return p;
+		}
+		if(p.getLeft() != null){
+			stack.push(p);
+			p = p.getLeft();
+		}
+		else{
+			while(p.getRight() == null){
+				p=stack.pop();
+			}
+			p=p.getRight();
+		}
+		return p;
+
+
+
+	}*/
+
+
+   // InOrder Successor
+   public BinaryTreeNode getInOrderSuccessor(BinaryTreeNode root,BinaryTreeNode node){
+
+   	if(node.right != null){
+   		return getMinValue(node.right);
+   	}
+
+   	BinaryTreeNode succ = null;
+
+   	while(root != null){
+
+   		if(node.getData() < root.getData()){
+   			succ = root;
+   			root = root.getLeft();
+   		}
+   		else if(node.getData() > root.getData()){
+   			root = root.getRight();
+   		}
+   		else 
+   			break;
+   	}
+   	return succ;
+
+   }	
+
+   public BinaryTreeNode getMinValue(BinaryTreeNode node){
+
+   		BinaryTreeNode current = node;
+
+   		while(current.getLeft() != null){
+   			current = current.getLeft();
+   		}
+
+   		return current;
+
+   }	
 
 
 	
@@ -752,10 +846,10 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		}
 
 		// Insertion in a BST
-		System.out.println();
+		/*System.out.println();
 		System.out.println("Enter the data for Insertion: ");
 		data = scan.nextInt();
-		
+		*/
 
 		tree.levleOrderUsingQueue(tree.insertIteratively(root,data));
 
@@ -771,9 +865,9 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		System.out.println("Size of Tree Iterative is: ");
 		System.out.print(tree.sizeIterative(root));
 
-		System.out.println();
+		/*System.out.println();
 		System.out.println("Reverse of the tree is: ");
-		tree.reverseTree(root);
+		tree.reverseTree(root);*/
 
 		System.out.println();
 		System.out.println("Height of the tree (Recursive) is: ");
@@ -798,7 +892,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		System.out.println("The level that contains maximum sum branch is : --> ");
 		System.out.println(tree.levelWithMaxSum(root));
 
-		System.out.println("Enter the data you want: ");
+		/*System.out.println("Enter the data you want: ");
 		data = scan.nextInt();
 		if(tree.isPath(root,data)){
 			System.out.println("There exists a path.");
@@ -806,8 +900,8 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		else{
 			System.out.println("There is no such path.");
 		}
-
-		tree.inOrderTraversal(tree.getMirror(root));
+*/
+		//tree.inOrderTraversal(tree.getMirror(root));
 
 		// Lowest Common Ancestor
 		System.out.println();
@@ -815,7 +909,17 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		data = scan.nextInt();
 		System.out.println("Enter the second node: ");
 		int data2 = scan.nextInt();
+		System.out.println("The LCA is: ");
 		System.out.println(lca(root,data,data2).getData());
+
+
+		// Getting Preorder successor of a node. (Important Question)
+		//System.out.println(tree.getPreOrderSuccessor(leftchild5).getData());
+		
+		// Getting InOrder Successor of a node. (Important Question)
+		System.out.println("The InOrder Successor is: ");
+		//System.out.println("The left is "+leftchild1.left.data+" and right is "+leftchild1.right.data);
+		System.out.println(tree.getInOrderSuccessor(root,leftchild3).getData());
 
 
 
