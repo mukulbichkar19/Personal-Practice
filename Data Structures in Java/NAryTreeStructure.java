@@ -6,20 +6,17 @@ public class NAryTreeStructure{
 
 	
 
-	pulic int getData(){
-
-		return data;
-	}
+	
 	// Setters
 	public void setData(int data){
 		this.data = data;
 	}
 
-	public void setFirstChild(BinaryTreeNode firstChild){
+	public void setFirstChild(NAryTreeStructure firstChild){
 		this.firstChild = firstChild;
 	}
 
-	public void setSibling(BinaryTreeNode nextSibling){
+	public void setnextSibling(NAryTreeStructure nextSibling){
 		this.nextSibling = nextSibling;
 	}
 
@@ -33,7 +30,7 @@ public class NAryTreeStructure{
 		return this.firstChild;
 	}
 
-	public NAryTreeStructure getSibling(){
+	public NAryTreeStructure getnextSibling(){
 		return this.nextSibling;
 	}
 
