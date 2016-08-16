@@ -101,3 +101,7 @@ public class mergeSort{
 
 	}
 }
+
+// The run time complexity of Merge Sort is:
+// O(n*logn)
+// 

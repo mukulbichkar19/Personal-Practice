@@ -65,3 +65,7 @@ public class BubbleSort{
 
 
 }
+
+// RunTime Complexity
+// 1. The worst case time complexity is O(n^2);
+// 2. The optimized version skips some passes;
