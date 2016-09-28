@@ -22,7 +22,7 @@ public class TraversalsInTree{
                           |
                     --------------
                     |            |
-                    4            6 
+                    4            6
 
 	*/
 
@@ -31,10 +31,10 @@ public class TraversalsInTree{
 	// PreOrder Traversal takes place in the order DLR
 	// Firstly the root or current node is visited and then
 	// the left and right children or subtrees are traversed.
-	// For the given tree the output should be 
+	// For the given tree the output should be
 	// 7 1 0 3 2 5 4 6 9 8 10
 	public void PreOrderTraversal(BinaryTreeNode root){
-		
+
 		if(root!=null){
 			System.out.print(root.data+" ");
 			PreOrderTraversal(root.left);
@@ -45,12 +45,12 @@ public class TraversalsInTree{
 	// InOrder Traversal takes place in the order LDR
 	// Firstly the left child or subtree is visited and then
 	// the parent and then the right children or subtrees are traversed.
-	// For the given tree the output should be 
+	// For the given tree the output should be
 	// 0 1 2 3 4 5 6 7 8 9 10
 	public void inOrderTraversal(BinaryTreeNode root){
-		
+
 		if(root!=null){
-			
+
 			inOrderTraversal(root.left);
 			System.out.print(root.data+" ");
 			inOrderTraversal(root.right);
@@ -60,12 +60,12 @@ public class TraversalsInTree{
 	// PostOrder Traversal takes place in the order LRD
 	// Firstly the left child or subtree is visited and then
 	// then the right children or subtrees are traversed and lastly the parent
-	// For the given tree the output should be 
+	// For the given tree the output should be
 	// 0 2 4 6 5 3 1 8 10 9
 	public void PostOrderTraversal(BinaryTreeNode root){
-		
+
 		if(root!=null){
-			
+
 			PostOrderTraversal(root.left);
 			PostOrderTraversal(root.right);
 			System.out.print(root.data+" ");
@@ -74,7 +74,7 @@ public class TraversalsInTree{
 
 ///////////////// End of Recursive version /////////////////////
 
-// Iterativ Version
+// Iterative Version
 
 public ArrayList<Integer> preOrderIterative(BinaryTreeNode root){
 
@@ -103,7 +103,7 @@ public ArrayList<Integer> preOrderIterative(BinaryTreeNode root){
 	}
 	return sequence;
 
-}	
+}
 
 
 public ArrayList<Integer> inOrderIterative(BinaryTreeNode root){
@@ -129,16 +129,16 @@ public ArrayList<Integer> inOrderIterative(BinaryTreeNode root){
 	}
 	return sequence;
 
-}	
+}
 
 
-/*  PostOrder     
+/*  PostOrder
 1.1 Create an empty stack
 2.1 Do following while root is not NULL
     a) Push root's right child and then root to stack.
     b) Set root as root's left child.
 2.2 Pop an item from stack and set it as root.
-    a) If the popped item has a right child and the right child 
+    a) If the popped item has a right child and the right child
        is at top of stack, then remove the right child from stack,
        push the root back and set root as root's right child.
     b) Else print root's data and set root as NULL.
@@ -154,7 +154,7 @@ public ArrayList<Integer> postOrderIterative(BinaryTreeNode root){
 	Stack<BinaryTreeNode> s = new Stack<BinaryTreeNode>();
 	s.push(root);
 	BinaryTreeNode prev = null;
-	
+
 	while(!s.isEmpty()){
 
 		BinaryTreeNode current = s.peek();
@@ -177,11 +177,11 @@ public ArrayList<Integer> postOrderIterative(BinaryTreeNode root){
 			s.pop();
 		}
 		prev = current;
-		
+
 	}
 	return sequence;
 
-}	
+}
 
 // Level Order Traversal
 public ArrayList<ArrayList<Integer>> levelOrderIterative(BinaryTreeNode root){
@@ -220,7 +220,7 @@ public ArrayList<ArrayList<Integer>> levelOrderIterative(BinaryTreeNode root){
 // Level Order Easy Way Using Queue
 public void levleOrderUsingQueue(BinaryTreeNode root){
 
-	
+
 		Queue<BinaryTreeNode> queue = new LinkedList<BinaryTreeNode>();
 		queue.offer(root);
 		while(!queue.isEmpty()){
@@ -229,12 +229,12 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 
 			if(tempNode.left != null){
 				queue.add(tempNode.left);
-			} 
+			}
 
 			if(tempNode.right!=null){
 				queue.add(tempNode.right);
 			}
-		}		
+		}
 	}
 
 // Maximum in a tree recursion
@@ -414,7 +414,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 
 	 public int sizeIterative(BinaryTreeNode root){
 	 	int count = 0;
-	 	Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();	
+	 	Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
 	 	q.offer(root);
 	 	while(!q.isEmpty()){
 	 		BinaryTreeNode temp4 = q.poll();
@@ -436,8 +436,8 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
 		q.offer(root);
 		while(!q.isEmpty()){
-			BinaryTreeNode temp5 = q.poll(); 
-			
+			BinaryTreeNode temp5 = q.poll();
+
 			if(temp5.right != null)
 			{
 				q.offer(temp5.right);
@@ -449,7 +449,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 			stack.push(temp5);
 		}
 		while(!stack.isEmpty()){
-			
+
 			System.out.print(stack.pop().getData()+" ");
 		}
 	}
@@ -500,7 +500,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 				}
 			}
 
-			
+
 		}
 
 
@@ -528,7 +528,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 			}
 		}
 		return count;
-	
+
 	}
 
 
@@ -553,9 +553,9 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 			}
 		}
 		return count;
-	
+
 	}
-	
+
 
 	public int levelWithMaxSum(BinaryTreeNode root){
 
@@ -569,7 +569,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		while(!q.isEmpty()){
 
 			BinaryTreeNode current = q.poll();
-			
+
 			if(current != null){
 
 				sum+=current.getData();
@@ -707,12 +707,12 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
    		else if(node.getData() > root.getData()){
    			root = root.getRight();
    		}
-   		else 
+   		else
    			break;
    	}
    	return succ;
 
-   }	
+   }
 
    public BinaryTreeNode getMinValue(BinaryTreeNode node){
 
@@ -724,16 +724,16 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 
    		return current;
 
-   }	
-
-
-	
+   }
 
 
 
 
-	
-	
+
+
+
+
+
 
 
 
@@ -882,7 +882,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 		System.out.println("Count of Leaf Nodes (Iterative) is: ");
 		System.out.println(tree.noOfLeafNodes(root));
 
-		
+
 
 		System.out.println();
 		System.out.println("Count of Full Nodes (Iterative) is: --> ");
@@ -915,7 +915,7 @@ public void levleOrderUsingQueue(BinaryTreeNode root){
 
 		// Getting Preorder successor of a node. (Important Question)
 		//System.out.println(tree.getPreOrderSuccessor(leftchild5).getData());
-		
+
 		// Getting InOrder Successor of a node. (Important Question)
 		System.out.println("The InOrder Successor is: ");
 		//System.out.println("The left is "+leftchild1.left.data+" and right is "+leftchild1.right.data);

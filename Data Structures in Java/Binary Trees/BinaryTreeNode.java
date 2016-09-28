@@ -10,7 +10,7 @@ public class BinaryTreeNode{
 		left = null;
 	}
 
-	//Setter
+	// Setters
 	public void setData(int data){
 		this.data = data;
 	}
@@ -40,7 +40,7 @@ public class BinaryTreeNode{
 
 
 
-	
+
 
 
 
