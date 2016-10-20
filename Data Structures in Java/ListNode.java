@@ -1,7 +1,7 @@
 public class ListNode{
-	
-	private ListNode next;
-	private int data;
+
+	public ListNode next;
+	public int data;
 
 	public ListNode(int data){
 
@@ -25,7 +25,7 @@ public class ListNode{
 		return this.next;
 	}
 
-	//LinkList Length 
+	//LinkList Length
 	public int LengthLinkedList(ListNode head){
 
 		int length = 0;
