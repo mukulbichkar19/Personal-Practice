@@ -1,16 +1,18 @@
 make:
-	javac ArrayDeclaration.java
+	@javac ArrayDeclaration.java
 
 run:
-	java: ArrayDeclaration
+	@java: ArrayDeclaration
 
 clean:
-	rm -rf *.class
+	@rm -rf *.class
 
 commit:
-	git add .
+	@git add .
 	@read -p "Enter Commit Message:" message; 
-	git commit $$message 
-	git push
+	@git commit $$message 
+	@git push
 
+filecount:
+	@ls -F |grep -v / | wc -l
 
