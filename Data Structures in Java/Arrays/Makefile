@@ -9,7 +9,8 @@ clean:
 
 commit:
 	git add .
-	@read -p "Enter Commit Message:" message;  
+	@read -p "Enter Commit Message:" message; 
+	git commit $$message 
 	git push
 
 
