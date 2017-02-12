@@ -6,3 +6,10 @@ run:
 
 clean:
 	rm -rf *.class
+
+commit:
+	git add .
+	@read -p "Enter Commit Message:" message;  
+	git push
+
+
