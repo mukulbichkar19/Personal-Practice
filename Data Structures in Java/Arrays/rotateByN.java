@@ -48,6 +48,33 @@ public class rotateByN{
 		
 	}
 
+	// Method 3: Using Reverse
+	private static void usingReverse(int[] array,int d){
+		
+		reverse(array,0,d-1);
+		reverse(array,d,array.length-1);
+		reverse(array,0,array.length-1);
+
+		System.out.println("Rotated array after reversal: ");
+		for(int i=0;i<array.length;i++){
+			System.out.print(array[i]+" ");
+		}
+		System.out.println();
+	
+	}
+
+	//Helper Method reverse array
+	private static void reverse(int[] arr, int start, int end){
+
+		while(end > start){
+			int temp = arr[start];
+			arr[start] = arr[end];
+			arr[end] = temp;
+			start++;
+			end--;
+		}
+	}
+
 	public static void main(String args[]){
 
 		int[] array = {1,2,3,4,5,6,7};
@@ -59,8 +86,13 @@ public class rotateByN{
 		usingTempArray(array, d);
 
 		// Method 2: Using Rotation one by one
-		int[] arr = {1,2,3,4,5,6,7};
-		usingRotationOneBy(arr,d);
+		//usingRotationOneBy(array,d);
+
+		// Method 3: Using Reverse
+		int[] new_array = {1,2,3,4,5,6,7};
+		usingReverse(new_array,d);
+
+		// Method 4: Block Swap Not Understood
 
 
 	}
