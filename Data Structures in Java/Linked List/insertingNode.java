@@ -1,0 +1,139 @@
+public class insertingNode {
+
+private static Node linked_list = null;
+
+// Insert Node at the start
+private static Node insertAtHead(Node linked_list, int data){
+
+        // Case when linked list is empty
+        if(linked_list == null) {
+                Node firstHead = new Node();
+                firstHead.data = data;
+                firstHead.next = null;
+                linked_list = firstHead;
+                return linked_list;
+        }else{
+                Node oldHead = linked_list;
+                Node newHead = new Node();
+                newHead.data = data;
+                newHead.next = oldHead;
+                linked_list = newHead;
+        }
+        return linked_list;
+}
+
+// Insert at given position
+private static Node insertAtPos(Node linked_list, int data, int pos){
+
+
+
+  if(pos == 1){
+    return insertAtHead(linked_list, data);
+  }else if(pos == length(linked_list)+1){
+    return insertAtTail(linked_list, data);
+  }else{
+    Node temp = linked_list;
+    int prev = 1;
+    while(prev != pos-1){
+      prev++;
+      temp = temp.next;
+    }
+    Node newNode = new Node();
+    newNode.data = data;
+    newNode.next = temp.next;
+    temp.next = newNode;
+  }
+  return linked_list;
+}
+
+
+
+// Insert at the end
+private static Node insertAtTail(Node linked_list, int data){
+
+        Node temp = linked_list;
+        while(temp.next !=  null) {
+                temp = temp.next;
+        }
+        Node tailNode = new Node();
+        tailNode.data = data;
+        tailNode.next = null;
+        temp.next = tailNode;
+        return linked_list;
+}
+
+
+// Find length of linked List
+private static int length(Node linked_list){
+  Node temp = linked_list;
+  int length = 0;
+  while(temp != null){
+    length++;
+    temp=temp.next;
+  }
+  return length;
+}
+
+// Display Linked List
+private static void display(Node linked_list){
+        Node temp = linked_list;
+        while(temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+        }
+        System.out.println();
+}
+
+
+
+public static void main(String args[]){
+
+        int data;
+
+        char ch;
+
+        do {
+                System.out.println("------- Menu --------");
+                System.out.println("1. Insert at head.");
+                System.out.println("2. Insert at given position");
+                System.out.println("3. Insert at the end");
+                System.out.println("4. Display linked list");
+                System.out.println("5. Length of linked list");
+                java.util.Scanner scan = new java.util.Scanner(System.in);
+                System.out.println("Enter choice: ");
+                int option = scan.nextInt();
+                switch(option) {
+
+                case 1: System.out.println("Insert the data: ");
+                        data = scan.nextInt();
+                        linked_list = insertAtHead(linked_list, data);
+                        break;
+                case 2: System.out.println("Insert the data and position: ");
+                        data = scan.nextInt();
+                        int pos = scan.nextInt();
+                        linked_list = insertAtPos(linked_list,data,pos);
+                        break;
+                case 3: System.out.println("Insert the data: ");
+                        data = scan.nextInt();
+                        linked_list = insertAtTail(linked_list, data);
+                        break;
+                case 4: display(linked_list);
+                        break;
+                case 5: System.out.println("The length of linked list is: "+
+                                            length(linked_list));
+                        break;
+                default: System.out.println("Wrong Choice");
+
+                }
+                System.out.println("Do you want to continue(y/n): ");
+                ch = scan.next().charAt(0);
+
+        } while(ch == 'y' || ch == 'Y');
+
+
+
+}
+
+
+
+}
