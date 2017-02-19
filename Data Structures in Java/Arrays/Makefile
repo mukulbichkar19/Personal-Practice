@@ -16,3 +16,5 @@ commit:
 filecount:
 	@ls -F |grep -v / | wc -l
 
+clear:
+	@clear
