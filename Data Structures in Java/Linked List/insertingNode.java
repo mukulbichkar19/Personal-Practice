@@ -1,3 +1,9 @@
+/*
+
+The below code covers insertion, finding length(both Iterative & recursive),
+ and searching an element(iterative and recursive)
+
+*/
 public class insertingNode {
 
 private static Node linked_list = null;
@@ -63,16 +69,58 @@ private static Node insertAtTail(Node linked_list, int data){
 }
 
 
-// Find length of linked List
+// // Find length of linked List (Iterative)
+// private static int length(Node linked_list){
+//   Node temp = linked_list;
+//   int length = 0;
+//   while(temp != null){
+//     length++;
+//     temp=temp.next;
+//   }
+//   return length;
+// }
+
+
+// Find length of linked List (Recursive)
+
 private static int length(Node linked_list){
-  Node temp = linked_list;
-  int length = 0;
-  while(temp != null){
-    length++;
-    temp=temp.next;
+  //Node temp = linked_list;
+  if(linked_list == null){
+    return 0;
+  }else{
+    return 1+length(linked_list.next);
   }
-  return length;
+
 }
+
+// // Search in linked list(Iterative)
+// private static boolean searchInLL(Node linked_list, int search){
+//
+//   Node temp = linked_list;
+//   while(temp != null){
+//     if(temp.data == search){
+//       return true;
+//     }
+//     temp = temp.next;
+//   }
+//   return false;
+// }
+
+// Search in linked list(Recursive)
+private static boolean searchInLL(Node linked_list, int search){
+
+  if(linked_list == null){
+    return false;
+  }else{
+    if(linked_list.data == search){
+      return true;
+    }
+    return searchInLL(linked_list.next, search);
+  }
+
+}
+
+
 
 // Display Linked List
 private static void display(Node linked_list){
@@ -99,6 +147,7 @@ public static void main(String args[]){
                 System.out.println("3. Insert at the end");
                 System.out.println("4. Display linked list");
                 System.out.println("5. Length of linked list");
+                System.out.println("6. Search an element");
                 java.util.Scanner scan = new java.util.Scanner(System.in);
                 System.out.println("Enter choice: ");
                 int option = scan.nextInt();
@@ -121,6 +170,14 @@ public static void main(String args[]){
                         break;
                 case 5: System.out.println("The length of linked list is: "+
                                             length(linked_list));
+                        break;
+                case 6: System.out.println("Enter the number you want to search: ");
+                        int search = scan.nextInt();
+                        if(searchInLL(linked_list, search)){
+                          System.out.println("Element "+search+" present");
+                        }else{
+                          System.out.println("Element "+search+" not present");
+                        }
                         break;
                 default: System.out.println("Wrong Choice");
 
