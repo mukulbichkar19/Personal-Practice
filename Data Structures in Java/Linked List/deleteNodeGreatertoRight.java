@@ -86,15 +86,15 @@ private static Node deleteMaxToRight(Node head){
         Node current = head;
         int max_so_far = current.data;
         Node next;
-        while(current != null){
-          next = current.next;
-          if(max_so_far < current.data){
-            max_so_far = current.data;
-          }
-          if(next.data < max_so_far){
-            current.next = next.next;
-          }
-          current = current.next;
+        while(current != null) {
+                next = current.next;
+                if(max_so_far < current.data) {
+                        max_so_far = current.data;
+                }
+                if(next.data < max_so_far) {
+                        current.next = next.next;
+                }
+                current = current.next;
         }
 
         // Again reverse to get the linked list in original form
