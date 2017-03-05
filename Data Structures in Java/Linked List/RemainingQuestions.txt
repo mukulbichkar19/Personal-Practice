@@ -1,0 +1,12 @@
+1. Swap Nodes
+2. merging sorted link list
+3. Split Alternate
+4. Merge Sort for LL
+5. Flatten multilevel LL
+6. QuickSort on LL
+7. Clone a linked list with next and random pointer | Set 1| Set 2
+8. Zig-zag list
+9. BST to DLL (Imp)
+10. BST to CLL
+11. QuickSort for DLL
+12. Merge sort for DLL
