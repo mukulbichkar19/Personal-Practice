@@ -1,0 +1,4 @@
+Java Standard Functions Useful List:-
+
+1. string.toCharArray() - Converts a String to character array
+2. String str = String.valueOf(charArray) - Converts a char array to String.
