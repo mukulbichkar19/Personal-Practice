@@ -94,6 +94,24 @@ public class stringsInJava{
    //Returns a string that contains the character sequence in the builder.
    System.out.println(sb.toString());
 
+   System.out.println("====== Program Creek ======");
+   // String part from ProgramCreek
+   String s1 = "abc";
+   String s2 = "abc";
+   System.out.println("Intern " + (s1==s2) + " and " + s1.equals(s2));
+
+   String s3 = new String("abc").intern(); // Added to point to same String
+   String s4 = new String("abc").intern();
+   System.out.println("Intern not in place " +(s3==s4) + " and " + s3.equals(s4));
+
+   // good practice to initialize a String with quotes
+
+   StringBuilder x = new StringBuilder("ab");
+	 change(x);
+	System.out.println("x : " + x);
+
+
+
 
 
 
@@ -105,5 +123,10 @@ public class stringsInJava{
 
 
   }
+
+    public static void change(StringBuilder x) {
+       System.out.println("x inside change: "+x);
+       x.delete(0, 2).append("cd");
+    }
 
 }

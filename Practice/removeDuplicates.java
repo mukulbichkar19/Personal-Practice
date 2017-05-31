@@ -20,8 +20,8 @@ public class removeDuplicates{
   }
 
   private static boolean runTest(int[] arr, int length){
-    int[] sol = {1,2,3,4,5};
-    //int[] sol = {1};
+    //int[] sol = {1,2,3,4,5,6,7};
+    int[] sol = {1};
     boolean test = false;
     for(int i=0;i<length;i++){
       if(arr[i] == sol[i]){
@@ -38,24 +38,32 @@ public class removeDuplicates{
     boolean test = false;
     int[] array = {1,1,1,2,3,4,4,4,4,5};
     //int[] array = {1,1,1,1,1,1,1};
-    for(int i=0, j=i+1; i<array.length && j<array.length ; i++){
+    //int[] array = {1,1,2,3,4,4,4,5,6,7,7,7,7};
+    for(int i=0, j=i+1, k=0; i<array.length && j<array.length ; ) {
 
         if(array[i] == array[j]){
           while(j <= array.length-1 && array[i] == array[j]) {
-
-                array[j++] = Integer.MIN_VALUE;
+              array[j] = Integer.MIN_VALUE;
+              j++;
           }
-        }else{
-          array[i+1] = array[j];
-          array[j] = Integer.MIN_VALUE;
-          j++;
+          array[k+1] = array[j];
+          array[j++] = Integer.MIN_VALUE;
+        }
+        else{
+          i = j;
+          j = j+1;
+          array[k+1] = array[i];
+          array[i] = Integer.MIN_VALUE;
+
         }
     }
     for(int i=0;i<array.length;i++){
-      if(array[i] != Integer.MIN_VALUE){
-        length++;
-      }
+      // if(array[i] != Integer.MIN_VALUE){
+      //   length++;
+      // }
+      System.out.println(array[i]);
     }
+    //System.out.println(length);
 
 
     if(runTest(array, length)){
