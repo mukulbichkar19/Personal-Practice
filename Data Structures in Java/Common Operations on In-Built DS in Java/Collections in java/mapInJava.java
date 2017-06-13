@@ -47,6 +47,18 @@ public class mapInJava{
     */
 
 
+    //Advanced Stuff
+    java.util.HashMap<Integer, Integer> adv = new java.util.HashMap<>();
+    adv.put(0,1);
+    adv.put(1,2);
+    adv.put(2,3);
+
+    adv.put(4);
+    adv.getOrDefault(4,0);
+    for(java.util.Map.Entry<Integer, Integer> entry:adv.entrySet()){
+      System.out.println(entry.getKey() + " and val " +entry.getValue());
+    }
+
 
   }
 

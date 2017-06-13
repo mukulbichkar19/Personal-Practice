@@ -7,7 +7,7 @@ Majority Element: A majority element in an array A[] of size n is an element tha
 Write a function which takes an array and emits the majority element (if it exists), otherwise prints NONE as follows:
 
        I/P : 3 3 4 2 4 4 2 4 4
-       O/P : 4 
+       O/P : 4
 
        I/P : 3 3 4 2 4 4 2 4
        O/P : NONE
@@ -16,12 +16,12 @@ Write a function which takes an array and emits the majority element (if it exis
 Three Methods:-
 1. Brute Force O(n^2), space - O(1)
 2. Sorting O(nlgn), space - O(1) //Does not help in here sod discard
-3. HashMap O(n) Space:- O(m), m is the count of unique elements in arr[n] 
+3. HashMap O(n) Space:- O(m), m is the count of unique elements in arr[n]
 4. Moore's Voting Algorithm. O(n), space - O(1)
 
 */
 public class MajorityElement{
-	
+
 
 	private static int bruteForce(int[] array){
 		int max_count = 0;
@@ -42,7 +42,7 @@ public class MajorityElement{
 			return max_element;
 		}
 			return -1;
-		
+
 	}
 
 	private static int usingSort(int[] array){
@@ -61,7 +61,7 @@ public class MajorityElement{
 				while(j<=array.length-1 && array[i]==array[j] ){
 					count++;
 					j++;
-					
+
 				}
 
 				if(max_count < count){
@@ -74,19 +74,19 @@ public class MajorityElement{
 				// System.out.println("For i at new pos: "+i+" and j at new pos: "+j+" and count: "+count);
 
 
-				
+
 			}
-			
+
 			if(max_count > array.length/2){
 				return max_element;
 			}else{
 				return -1;
 			}
 
-			
+
 	}
 
-	// Uisng HashMap
+	// Using HashMap
 	private static int usingHashMap(int[] array){
 
 		java.util.Map<Integer, Integer> hashmap = new java.util.HashMap<>();
@@ -101,7 +101,7 @@ public class MajorityElement{
 			}else{
 				hashmap.put(array[i],1);
 			}
-			
+
 		}
 		return -1;
 
@@ -124,7 +124,7 @@ public class MajorityElement{
 			}
 		}
 
-		
+
 
 		// Step 2: Verify whether the predicted maximum is really the majority
 		int majority_count = 0;
@@ -138,7 +138,7 @@ public class MajorityElement{
 		}else{
 			return -1;
 		}
-		
+
 	}
 
 
@@ -181,7 +181,7 @@ public class MajorityElement{
 			System.out.println("NONE");
 
 
-		
+
 
 
 
