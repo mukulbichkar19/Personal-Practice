@@ -51,8 +51,10 @@ public class binTreeInPre{
 
   public static void main(String args[]){
     binTreeInPre b = new binTreeInPre();
-    int[] preOrder = {9,6,3,2,5,8,12,11,15};
-    int[] inOrder = {2,3,5,6,8,9,11,12,15};
+    //int[] preOrder = {9,6,3,2,5,8,12,11,15};
+    //int[] inOrder = {2,3,5,6,8,9,11,12,15};
+    int[] preOrder = {2,1,3,4};
+    int[] inOrder = {1,2,3,4};
     Node root = b.constructTree(inOrder, preOrder,0, preOrder.length-1);
     System.out.println("Constructed Binary Tree");
     printTree(root);
