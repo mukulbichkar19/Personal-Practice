@@ -38,4 +38,8 @@ public class Animal{
     this.sound = sound;
   }
 
+  public String getSound(){
+    return this.sound;
+  }
+
 }

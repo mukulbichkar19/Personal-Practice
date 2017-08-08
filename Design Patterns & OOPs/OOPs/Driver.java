@@ -15,6 +15,23 @@ public class Driver{
     changeObjectName(roger);
     System.out.println("After method call: "+roger.getName());
 
+    // Abstraction here you cannot acccess methods or fields from dog or cat
+    Animal doggy = new Dog();
+    Animal kitty = new Cat();
+
+
+    Animal[] animals = new Animal[2];
+    animals[0] = doggy;
+    animals[1] = kitty;
+    for(Animal a:animals){
+      System.out.println(a.getSound());
+    }
+
+
+    // Abstarction
+
+
+
   }
 
   public static void changeObjectName(Dog obj){
