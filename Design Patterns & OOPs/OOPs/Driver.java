@@ -33,6 +33,11 @@ public class Driver{
     g.setName("Frank");
     System.out.println("Giraffe's name is "+g.getName());
 
+    // interfaces
+    Monkey m = new Monkey();
+    m.setName("Rangoon");
+    System.out.println("monkey's name is "+m.getName());
+
 
 
   }
