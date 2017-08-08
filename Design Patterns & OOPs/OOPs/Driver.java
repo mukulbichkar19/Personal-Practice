@@ -29,6 +29,9 @@ public class Driver{
 
 
     // Abstarction
+    Giraffe g = new Giraffe();
+    g.setName("Frank");
+    System.out.println("Giraffe's name is "+g.getName());
 
 
 
