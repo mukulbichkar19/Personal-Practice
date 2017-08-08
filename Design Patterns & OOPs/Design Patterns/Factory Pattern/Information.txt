@@ -1,0 +1,9 @@
+1. Factory pattern is used when a method returns one of the several classes that share a common super class.
+2. Factory pattern is one of the most used design patterns in Java.
+3. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.
+4. When to use factory design pattern:-
+  a. When you don't know ahead of time what class object is needed.
+  b. When all potential classes are in the same subclass hierarchy.
+  c. To centralize class selection code.
+  d. When you don't want user to have to know every subclass.
+  e. To encapsulate object creation.
