@@ -8,3 +8,8 @@
 7. One example of how this can be useful is if an original object is created with a resource such as a data stream that may not be available at the time that a clone of the object is needed.
 8. Another example is if the original object creation involves a significant time commitment, such as reading data from a databaseW or over a network.
 9. An added benefit of the prototype pattern is that it can reduce class proliferation in a project by avoiding factory proliferation.
+
+
+References And Links:-
+1. http://www.avajava.com/tutorials/lessons/prototype-pattern.html
+2. https://www.youtube.com/watch?v=AFbZhRL0Uz8&list=PLF206E906175C7E07&index=9
