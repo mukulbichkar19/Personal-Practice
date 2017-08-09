@@ -1,0 +1,15 @@
+1. Creational Pattern
+2. Creating new objects by cloning i.e. copying other objects
+3. This pattern involves implementing a prototype interface which tells to create a clone of the current object.
+4. This pattern is used when creation of object directly is costly.
+   For example, an object is to be created after a costly database operation. We can cache the object, returns its clone on next request and update the database as and when needed thus reducing database calls.
+5. Allows for adding of any subclass instance of a known super class at run time.
+6. Reduces the need for creating subclasses
+7. One example of how this can be useful is if an original object is created with a resource such as a data stream that may not be available at the time that a clone of the object is needed.
+8. Another example is if the original object creation involves a significant time commitment, such as reading data from a databaseW or over a network.
+9. An added benefit of the prototype pattern is that it can reduce class proliferation in a project by avoiding factory proliferation.
+
+
+References And Links:-
+1. http://www.avajava.com/tutorials/lessons/prototype-pattern.html
+2. https://www.youtube.com/watch?v=AFbZhRL0Uz8&list=PLF206E906175C7E07&index=9

@@ -1,0 +1,6 @@
+This consists of :-
+1. Factory
+2. Abstract Factory. (Absent)
+3. Singleton
+4. Prototype
+5. Builder
