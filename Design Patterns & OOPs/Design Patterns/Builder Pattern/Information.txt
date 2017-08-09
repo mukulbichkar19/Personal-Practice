@@ -1,0 +1,21 @@
+1. Pattern used to create objects made from a bunch of other objects
+
+2. When you want the creation of these parts to be independent of the main object.
+
+3. Hide the creation of the parts from the client so that both aren't dependent.
+
+4. Builder knows the specifics and no one else knows.
+
+5. Builder pattern builds a complex object using simple objects and using a step by step approach. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.
+
+6. A Builder class builds the final object step by step. This builder is independent of other objects.
+
+7. The builder has 4 main parts: a Builder, Concrete Builders, a Director, and a Product.
+
+8. A Builder is an interface (or abstract class) that is implemented (or extended) by Concrete Builders. The Builder interface sets forth the actions (methods) involved in assembling a Product object. It also has a method for retrieving the Product object (ie, getProduct()). The Product object is the object that gets assembled in the builder pattern.
+
+9. Concrete Builders implement the Builder interface (or extend the Builder abstract class). A Concrete Builder is responsible for creating and assembling a Product object. Different Concrete Builders create and assemble Product objects differently.
+
+10. A Director object is responsible for constructing a Product. It does this via the Builder interface to a Concrete Builder. It constructs a Product via the various Builder methods.
+
+11. There are various uses of the builder pattern. For one, if we'd like the construction process to remain the same but we'd like to create a different type of Product, we can create a new Concrete Builder and pass this to the same Director. If we'd like to alter the construction process, we can modify the Director to use a different construction process.
