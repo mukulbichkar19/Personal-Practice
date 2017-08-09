@@ -10,6 +10,31 @@ public class WeightedScheduling{
     return jobs;
   }
 
+  // Binary search
+  private static int binarySearch(Job[] jobs, int index){
+
+    int low = 0;
+    int high = index-1;
+
+
+    while(low <= high){
+      int mid = (low+high)/2;
+      if(jobs[mid].getEndTime() <= jobs[index].getStartTime()){
+        if(jobs[mid+1].getEndTime() <= jobs[index].getStartTime()){
+          low = mid + 1;
+        }else{
+          return mid;
+        }
+    }else{
+        high = mid-1;
+      }
+    }
+    return -1;
+
+
+
+  }
+
   private static int findMaxProfit(Job[] jobs){
     // 1. Sort jobs based on the finish times O(nlgn)
     jobs = sortJobs(jobs);
@@ -29,7 +54,14 @@ public class WeightedScheduling{
 
     // In optimized version the searching can be modified to binary search as
     // so that run time becomes O(nlogn)
-    // TODO: after reaching home
+    for(int i=1;i<jobs.length;i++){
+      int val = binarySearch(jobs, i); //O(logn)
+      if(val != -1){
+        if(isNOS(jobs[val], jobs[i])){
+          dp[i] = Math.max(dp[i], dp[val]+jobs[i].getWeight());
+        }
+      }
+    }
 
 
     return findMaxInArray(dp);
