@@ -1,9 +1,0 @@
-1. It is used to eliminate the option of instantiating more than one object.
-
-2. Singleton pattern is one of the simplest design patterns in Java.
-
-3. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.
-
-4. This pattern involves a single class which is responsible to create an object while making sure that only single object gets created.
-
-5. This class provides a way to access its only object which can be accessed directly without need to instantiate the object of the class.
