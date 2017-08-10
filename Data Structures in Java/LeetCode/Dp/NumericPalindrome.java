@@ -3,7 +3,6 @@ public class NumericPalindrome{
   private static boolean is_numeric_palindrome(long number) {
 
     long reversed_number = reverse(number);
-    System.out.println("reversed number: "+reversed_number);
     if(number-reversed_number == 0){
       return true;
     }
