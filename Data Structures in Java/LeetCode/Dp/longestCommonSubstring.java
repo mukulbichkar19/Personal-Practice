@@ -18,7 +18,6 @@ public class longestCommonSubstring{
 
     dp = new int[s1.length()+1][s2.length()+1];
     int max_len = 0;
-
     for(int i=1;i<=s1.length();i++){
       for(int j=1;j<=s2.length();j++){
         if(s1.charAt(i-1)==s2.charAt(j-1)){
@@ -27,7 +26,6 @@ public class longestCommonSubstring{
         }
       }
     }
-
     return max_len;
   }
 
