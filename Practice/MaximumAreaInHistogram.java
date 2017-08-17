@@ -12,11 +12,17 @@ public class MaximumAreaInHistogram{
     for(int i=0;i<n;i++){
       int local_area = hist[i];
       int j = i+1;
+      int k = i-1;
       int min = hist[i];
-      for(j=i+1;j<n;j++){
-        min = Math.min(min, hist[j]);
+      // Iterate forward till you encounter something greater
+      while(j<n && hist[j] > hist[i]){
+        j++;
       }
-      local_area = min*(j-i);
+      // Iterate backwards till you encounter something smaller
+      while(k>=0 && hist[k] > hist[i]){
+        k--;
+      }
+      local_area = min*(j-k-1);
       if(local_area > max_area){
         max_area = local_area;
       }
@@ -65,7 +71,7 @@ public class MaximumAreaInHistogram{
 
   public static void main(String args[]){
 
-    int[] hist = {2,1,2,3,1};
+    int[] hist = {6,2,5,4,5,1,6};
     // Brute Force Solution
     int area = findArea(hist);
     System.out.println("Maximum area in a rectangle is: "+area);
