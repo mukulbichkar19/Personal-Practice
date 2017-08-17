@@ -1,6 +1,6 @@
 Design Patterns:-
 
-A.  _Creational Design Patterns_ 
+A.  _**Creational Design Patterns**_ 
 
     1. Singleton
     2. Factory
@@ -10,7 +10,7 @@ A.  _Creational Design Patterns_
     
     TOTAL = 5
 
-B. *Structural Design Patterns*
+B. _**Structural Design Patterns**_
 
     1. Adapter
     2. Composite
@@ -22,7 +22,7 @@ B. *Structural Design Patterns*
 
     TOTAL = 7
     
-C. *Behavioral Design Patterns*
+C. _**Behavioral Design Patterns**_
 
     1. Template Method
     2. Mediator
