@@ -1,0 +1,5 @@
+Adapter Design Pattern:-
+1. Allows 2 incompatible interfaces to work together
+2. Used when client expects a target interface.
+3. The Adapter Class allows the use of available interface and the Target Interface.
+4. Any class can work together as long as the Adapter solves the issue that all classes must implement every method defined in the shared interface.
