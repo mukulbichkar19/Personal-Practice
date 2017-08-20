@@ -1,0 +1,11 @@
+Composite pattern is used where we need to treat a group of objects in similar way as a single object. Composite pattern composes objects in term of a tree structure to represent part as well as whole hierarchy. This type of design pattern comes under structural pattern as this pattern creates a tree structure of group of objects.
+
+This pattern creates a class that contains group of its own objects. This class provides ways to modify its group of same objects.
+
+The composite pattern is a structural design pattern. In the composite pattern, a tree structure exists where identical operations can be performed on leaves and nodes. A node in a tree is a class that can have children. A node class is a 'composite' class. A leaf in a tree is a 'primitive' class that does not have children. The children of a composite can be leaves or other composites.
+
+The leaf class and the composite class share a common 'component' interface that defines the common operations that can be performed on leaves and composites. When an operation on a composite is performed, this operation is performed on all children of the composite, whether they are leaves or composites. Thus, the composite pattern can be used to perform common operations on the objects that compose a tree.
+
+The Composite design pattern is used to structure data into its individual parts as well as represent the inner workings of every part of a larger object.
+
+The composite pattern also allows you to treat both groups of parts in the same way as you treat the parts polymorphically. This allows your objects to maximize complexity while also remaining dynamic.
