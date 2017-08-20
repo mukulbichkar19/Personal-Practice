@@ -1,0 +1,6 @@
+1. Used when you want to create a large number of Similar Objects.
+2. To reduce memory usage you share Objects that are similar in some way rather than creating new ones.
+3. Flyweight pattern is primarily used to reduce the number of objects created and to decrease memory footprint and increase performance.
+4. This type of design pattern comes under structural pattern as this pattern provides ways to decrease object count thus improving the object structure of application.
+5. The flyweight pattern is a structural design pattern.
+6. In the flyweight pattern, instead of creating large numbers of similar objects, objects are reused. This can be used to reduce memory requirements and instantiation time and related costs.
