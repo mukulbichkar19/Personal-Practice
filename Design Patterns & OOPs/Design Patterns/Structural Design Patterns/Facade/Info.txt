@@ -1,0 +1,3 @@
+The facade pattern is a structural design pattern. In the facade pattern, a facade classes is used to provide a single interface to set of classes. The facade simplifies a clients interaction with a complex system by localizing the interactions into a single interface. As a result, the client can interact with a single object rather than being required to interact directly in complicated ways with the objects that make up the subsystem.
+
+Facade pattern hides the complexities of the system and provides an interface to the client using which the client can access the system. This type of design pattern comes under structural pattern as this pattern adds an interface to existing system to hide its complexities.
