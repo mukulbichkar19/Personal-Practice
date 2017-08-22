@@ -3,3 +3,5 @@ The command pattern is a behavioral object design pattern. In the command patter
 In the command pattern, the invoker is decoupled from the action performed by the receiver. The invoker has no knowledge of the receiver. The invoker invokes a command, and the command executes the appropriate action of the receiver. Thus, the invoker can invoke commands without knowing the details of the action to be performed. In addition, this decoupling means that changes to the receiver's action don't directly affect the invocation of the action.
 
 The command pattern can be used to perform 'undo' functionality. In this case, the Command interface should include an unexecute() method.
+
+A request is wrapped under an object as command and passed to invoker object. Invoker object looks for the appropriate object which can handle this command and passes the command to the corresponding object which executes the command.
