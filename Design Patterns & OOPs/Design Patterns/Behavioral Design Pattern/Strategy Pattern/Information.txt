@@ -11,3 +11,8 @@
 6. The Strategy Pattern lets the algorithm vary independently from clients that use it.
 
 7. Example: Sorting in which a program uses different algorithms based on the size of input. If input is small then it uses InsertionSort and if input size is large and sequence is almost sorted i.e. quicksort goes to its worst case time complexity then merge sort or heapsort is used.
+
+
+The strategy pattern is a behavioral object design pattern. In the strategy pattern, different algorithms are represented as Concrete Strategy classes, and they share a common Strategy interface. A Context object contains a reference to a Strategy. By changing the Context's Strategy, different behaviors can be obtained. Although these behaviors are different, the different strategies all operate on data from the Context.
+
+The strategy pattern is one way that composition can be used as an alternative to subclassing. Rather than providing different behaviors via subclasses overriding methods in superclasses, the strategy pattern allows different behaviors to be placed in Concrete Strategy classes which share the common Strategy interface. A Context class is composed of a reference to a Strategy.
