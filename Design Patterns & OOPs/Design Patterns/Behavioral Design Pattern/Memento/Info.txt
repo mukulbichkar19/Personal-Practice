@@ -1,0 +1,13 @@
+The memento pattern is a behavioral design pattern. The memento pattern is used to store an object's state so that this state can be restored at a later point. The saved state data in the memento object is not accessible outside of the object to be saved and restored. This protects the integrity of the saved state data.
+
+In this pattern, an Originator class represents the object whose state we would like to save. A Memento class represents an object to store the state of the Originator. The Memento class is typically a private inner class of the Originator. As a result, the Originator has access to the fields of the memento, but outside classes do not have access to these fields. This means that state information can be transferred between the Memento and the Originator within the Originator class, but outside classes do not have access to the state data stored in the Memento.
+
+The memento pattern also utilizes a Caretaker class. This is the object that is responsible for storing and restoring the Originator's state via a Memento object. Since the Memento is a private inner class, the Memento class type is not visible to the Caretaker. As a result, the Memento object needs to be stored as an Object within the Caretaker.
+
+Now, let's look at an example. The DietInfo class is our Originator class. We'd like to be able to save and restore its state. It contains 3 fields: a dieter name field, the day number of the diet, and the weight of the dieter on the specified day of the diet.
+
+This class contains a private inner class called Memento. This is our Memento class that is used to save the state of DietInfo. Memento has 3 fields representing the dieter name, the day number, and the weight of the dieter.
+
+Notice the save() method of DietInfo. This creates and returns a Memento object. This returned Memento object gets stored by the caretaker. Note that DietInfo.Memento is not visible, so the caretaker can't reference DietInfo.Memento. Instead, it stores the reference as an Object.
+
+The restore() method of DietInfo is used to restore the state of the DietInfo. The caretaker passes in the Memento (as an Object). The memento is cast to a Memento object and then the DietInfo object's state is restored by copying over the values from the memento.
