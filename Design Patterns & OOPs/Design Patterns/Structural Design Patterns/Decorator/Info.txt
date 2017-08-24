@@ -1,4 +1,6 @@
-The decorator pattern is a structural design pattern. Whereas inheritance adds functionality to classes, the decorator pattern adds functionality to objects by wrapping objects in other objects. Each time additional functionality is required, the object is wrapped in another object.
+The decorator pattern is a structural design pattern.
+
+Whereas inheritance adds functionality to classes, the decorator pattern adds functionality to objects by wrapping objects in other objects. Each time additional functionality is required, the object is wrapped in another object.
 
 The Decorator allows you to modify an object dynamically. You would use it when you want the capabilities of inheritance with subclasses, but you need to add functionality at run time.
 
