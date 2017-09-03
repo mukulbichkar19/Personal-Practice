@@ -16,19 +16,20 @@ public class DetectCycle{
       }
     }
 
+    // If no cycle detected then return null
     if(fast == null || fast.next == null){
       return null;
     }
 
 
 
-      // If break it indicates a cycle now move slow to head and progress
-      // at same pace till slow == fast
-      slow = head;
-      while(slow != fast){
-        slow = slow.next;
-        fast = fast.next;
-      }
+    // If break it indicates a cycle now move slow to head and progress
+    // at same pace till slow == fast
+    slow = head;
+    while(slow != fast){
+      slow = slow.next;
+      fast = fast.next;
+    }
 
 
 
