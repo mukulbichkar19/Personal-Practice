@@ -8,20 +8,16 @@ public class DetectCycle{
     Node fast = head;
 
     while(fast!=null && fast.next!=null){
-
       slow = slow.next;
       fast = fast.next.next;
       if(slow == fast){
         break;
       }
     }
-
     // If no cycle detected then return null
     if(fast == null || fast.next == null){
       return null;
     }
-
-
 
     // If break it indicates a cycle now move slow to head and progress
     // at same pace till slow == fast
@@ -30,16 +26,7 @@ public class DetectCycle{
       slow = slow.next;
       fast = fast.next;
     }
-
-
-
-
-
-
     return fast;
-
-
-
   }
 
   public static void main(String args[]){
@@ -55,8 +42,6 @@ public class DetectCycle{
     node2.next = node3;
     node3.next = node4;
     node4.next = node3;
-
-
 
     Node cycle = detectCycle(head);
     if(cycle != null){
