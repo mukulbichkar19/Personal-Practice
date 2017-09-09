@@ -1,3 +1,4 @@
+
 public class MyStack<T>{
 
   private static class StackNode<T>{
@@ -14,8 +15,8 @@ public class MyStack<T>{
 
   // pop
   public T pop(){
+
     if(isEmpty()){
-      //throw new EmptyStackException();
       System.out.println("Stack is Empty");
     }
     T item = top.data;
@@ -33,7 +34,7 @@ public class MyStack<T>{
   // peek
   public T peek(){
     if(isEmpty())
-      //throw new EmptyStackException();
+      //throw new myEmptyStackException();
       System.out.println("Stack is empty");
     return top.data;
   }
