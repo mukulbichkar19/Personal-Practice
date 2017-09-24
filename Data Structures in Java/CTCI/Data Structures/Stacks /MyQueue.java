@@ -1,3 +1,6 @@
+/*
+  Queues are used in BFS or implementing a cache
+*/
 public class MyQueue<T>{
 
   private static class QueueNode<T>{
