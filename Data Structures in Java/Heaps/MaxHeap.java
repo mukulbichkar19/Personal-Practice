@@ -45,7 +45,6 @@ public class MaxHeap{
 
   public static void main(String args[]){
 
-
       array = new int[8];
       array[0] = -1;
       array[1] = 1;
