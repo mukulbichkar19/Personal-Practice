@@ -4,6 +4,8 @@ public class LCA{
 
   private static List<TreeNode> path = new ArrayList<>();
 
+  private static int total_size = 0;
+
   private static void display(TreeNode root){
     if(root != null){
       display(root.left);
@@ -73,6 +75,28 @@ public class LCA{
 
   }
 
+  private static int sizeTree(TreeNode root){
+
+    if(root==null){ return 0; }
+    return sizeTree(root.left) + 1 + sizeTree(root.right);
+  }
+
+  private static int countLeafNodes(TreeNode root){
+
+    if(root == null){
+      return 0;
+    }
+
+    if(root.left == null && root.right == null){
+      return 1;
+    }
+
+    return countLeafNodes(root.left) + countLeafNodes(root.right);
+
+
+
+  }
+
   public static void main(String args[]){
 
 
@@ -91,13 +115,17 @@ public class LCA{
     left.right = right1;
 
     right.left = left2;
-    right.right = right2;
+    //right.right = right2;
 
     //display(root);
     TreeNode res = findPath(root, 2,4);
     System.out.println("The LCA is: "+res.val);
     int d = findDistance(root, 3,5);
     System.out.println("The distance is: "+d);
+
+    //System.out.println("The total size of tree is: "+sizeTree(root));
+    int leaves = countLeafNodes(root);
+    System.out.println("Leaves are: "+leaves);
 
 
 
