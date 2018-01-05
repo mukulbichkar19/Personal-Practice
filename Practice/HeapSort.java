@@ -1,82 +1,70 @@
 public class HeapSort{
 
-  private static void sort(int[] arr){
+
+  private static void heapsort(int[] arr){
 
     int n = arr.length;
-
-    // Build Heap
+    //Build Max heap
     for(int i=n/2-1;i>=0;i--){
-      heapify(arr, n, i);
+      heapify(arr,n,i);
     }
 
     for(int i=n-1;i>=0;i--){
+
       int temp = arr[0];
       arr[0] = arr[i];
       arr[i] = temp;
+
       heapify(arr,i,0);
+
     }
+
+    print(arr);
+
+
   }
 
-  private static void heapify(int[] arr, int n, int i){
+  private static void print(int[] a){
+    for(int i=0;i<a.length;i++){
+      System.out.print(a[i] + " ");
+    }
+    System.out.println();
+  }
+
+  private static void heapify(int[] a, int n, int i){
 
     int largest = i;
-    int l = 2*i + 1;
-    int r = 2*i + 2;
+    int left = 2*i + 1;
+    int right = 2*i + 2;
 
-    if(l < n && arr[l] > arr[largest]){
-      largest = l;
+    if(left < n && a[left] > a[largest]){
+      largest = left;
     }
 
-    if(r < n && arr[r] > arr[largest]){
-      largest = r;
+    if(right < n && a[right] > a[largest]){
+      largest = right;
     }
 
     if(largest != i){
-      // Swap largest and i
-      int swap = arr[i];
-      arr[i] = arr[largest];
-      arr[largest] = swap;
-      heapify(arr,n, largest);
+      int temp = a[i];
+      a[i] = a[largest];
+      a[largest] = temp;
+
+      // Call heapify
+      heapify(a,n,largest);
     }
-  }
-
-  private static void findKLargest(int[] arr, int k){
-
-    int n = arr.length;
-    // Build a max heap
-    for(int i=n/2-1;i>=0;i--){
-      heapify(arr, n, i);
-    }
-
-    int j = n-k;
-    for(int i=n-1;i>=j;i--){
-      int temp = arr[i];
-      arr[i] = arr[0];
-      arr[0] = temp;
-      System.out.print(arr[i] + " ");
-      heapify(arr,i,0);
-    }
-
-
-
-
   }
 
 
   public static void main(String args[]){
-    int[] arr = {12,11,13,5,6,7};
-    sort(arr);
-    for(int i=0;i<arr.length;i++){
-      System.out.print(arr[i] + " ");
-    }
-    System.out.println();
 
-    // Print k largest elements in an Array
-    findKLargest(arr,3);
-    System.out.println();
+      int[] array = {12,11,13,5,6,7};
 
+      heapsort(array);
 
 
 
   }
+
+
 }
