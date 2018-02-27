@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+  <script>
+    function doSomething(){
+      console.log("A way to function declaration");
+    }
+
+    var doSomething2 = function(){
+      console.log('A way to Function expression');
+    }
+
+    doSomething();
+    doSomething2();
+
+    (function foo(){
+      console.log("IIFE");
+    })();
+
+    // Closures
+    function celebrityName(firstName){
+      var nameIntro = 'Your name is: ';
+
+      function lastName(lastName){
+        return nameIntro + firstName + " " +lastName;
+      }
+
+      return lastName;
+    }
+
+
+    var mjName = celebrityName("Michael");
+    console.log(mjName("Jackson"));
+
+
+    
+
+
+  </script>
+</head>
+
+
+<body>
+  <h2> Hello World </h2>
+</body>
