@@ -1,0 +1,3 @@
+class MaxLevel{
+  int maxLevel;
+}
