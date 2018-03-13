@@ -67,11 +67,11 @@ public class Driver{
       systems.add(s8);
 
       Cluster c1 = new Cluster("Cluster1");
-      Cluster c2 = new Cluster("Cluster2");
+      // Cluster c2 = new Cluster("Cluster2");
 
       clusters = new LinkedHashSet<>();
       clusters.add(c1);
-      clusters.add(c2);
+      //clusters.add(c2);
       Set<System> undeployed = deploy(systems, clusters);
       for(System u:undeployed){
         java.lang.System.out.println(u.toString() + " system not deployed");
