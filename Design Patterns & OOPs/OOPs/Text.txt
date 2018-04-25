@@ -1,0 +1,25 @@
+Parking Lot
+--- Three parking spots sizes - 1. regular 2. handicapped 3. compact
+--- Two types of customers - 1. members 2. guests
+--- Counter screen on each row.
+
+Questions:-
+1. Is it a single floor or multi floored parking lot ?
+  - Single or multiple  (Single)
+2. Each parking lot consists of multiple rows which consist of multiple slots
+   each one having different attributes
+3. Do each user has time logging system ?
+4. How are membership users different from guests.
+    - How is the mebership -like for a residential complex a member will have
+      access to his slot 24*7 whereas in a public paid parking a member may have
+      priority or get benefits in terms of pricing etc.
+5. Are there any particular kind of vehicles that can fit in a particular slot.
+      - Depends on clarifying answer.
+
+
+1. Use enum for slot sizes - as limited quantity. //Done
+2. Customer abstract class - Member and Guest inherit the Customer parent class. // Done
+3. Use private, protected and public to ensure encapsulation and data hiding. // Done
+4. Use composition and aggregation.
+5. Use abstract class Spot and make regular, handicapped, compact inherit from
+   parent class.
