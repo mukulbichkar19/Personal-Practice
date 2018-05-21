@@ -8,7 +8,6 @@ public class PartitionLomatus{
   }
 
   private static void partition(int[] nums, int pivot){
-
     int pivot_value = nums[pivot];
     int i = 0;
     // swap pivot with last

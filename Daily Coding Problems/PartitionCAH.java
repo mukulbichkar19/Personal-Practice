@@ -14,11 +14,11 @@ public class PartitionCAH{
     int high = nums.length-1;
 
     while(low < high){
-      while(nums[low] <= pivot_value){
+      while(low < nums.length && nums[low] <= pivot_value){
         low++;
       }
 
-      while(nums[high] > pivot_value){
+      while(high >=0 && nums[high] > pivot_value){
         high--;
       }
 
@@ -30,9 +30,8 @@ public class PartitionCAH{
     }
   }
 
-
   public static void main(String args[]){
-    int[] nums = {2,3,1,9,33,21,8,15,4};
+    int[] nums = {3,5};
     System.out.println("Before partioning:");
     display(nums);
     partition(nums,8);
