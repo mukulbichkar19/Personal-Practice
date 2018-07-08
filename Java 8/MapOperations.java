@@ -76,6 +76,26 @@ public class MapOperations {
   }
 
 
+  /**
+   * filterMap : Filter map values based on some criteria
+   */
+  private static void filterMap() {
+    Map<String, Integer> map = new HashMap<>();
+    map.put("alice", 2);
+    map.put("apple", 3);
+    map.put("xyz", 5);
+    map.put("ripples", 7);
+    map.put("cat", 2);
+    map.put("decoy", 8);
+
+    Map<String, Integer> greaterThanThree = map.entrySet().stream()
+                                               .filter(x -> x.getValue() > 3)
+                                               .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+    greaterThanThree.entrySet().forEach(System.out::println);
+  }
+
+
 
 
 
@@ -84,6 +104,9 @@ public class MapOperations {
       sortMapByKey();
       System.out.println("---------------------------");
       sortByValues();
+      System.out.println("---------------------------");
+      filterMap();
+
 
 
 
